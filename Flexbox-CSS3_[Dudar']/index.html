@@ -1,0 +1,112 @@
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  @media (min-width: 500px) {
+    .container-1,
+    .container-2 {
+      display: flex;
+      /* align-items: flex-start; */
+    }
+  }
+
+  .container-2 {
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .container-1 div,
+  .container-2 div {
+    border: 1px solid silver;
+    padding: 10px;
+  }
+
+  .box-1 {
+    flex: 2;
+    order: 2;
+  }
+
+  .box-2 {
+    flex: 2;
+    order: 1;
+  }
+
+  .box-3 {
+    flex: 1;
+    order: 3;
+  }
+
+  .box {
+    flex-basis: 20%; /*the same as width: 20% but it is better to use this*/
+  }
+</style>
+
+<div class="container-1">
+  <div class="box-1">
+    <h3>Box 1</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt,
+      voluptatibus ea. Voluptas quo consequatur velit exercitationem repudiandae
+      a, distinctio eligendi magnam molestias explicabo, deserunt debitis
+      voluptatem ratione neque possimus aperiam tempore quia reiciendis
+      reprehenderit eius accusantium assumenda atque? Modi doloremque sapiente,
+      cum mollitia fuga numquam aut cupiditate dolor necessitatibus animi!
+    </p>
+  </div>
+  <div class="box-2">
+    <h3>Box 2</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, ratione
+    quisquam modi quam blanditiis sit nesciunt error nemo fugiat obcaecati.
+  </div>
+  <div class="box-3">
+    <h3>Box 3</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi corrupti harum
+    magni dolores blanditiis accusamus, aperiam odit ut cum hic inventore
+    tempore perspiciatis saepe exercitationem ex aliquid nisi animi provident.
+  </div>
+</div>
+
+<div class="container-2">
+  <div class="box">
+    <h3>Box 1</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt,
+      voluptatibus ea. Voluptas quo consequatur velit exercitationem repudiandae
+      a, distinctio eligendi magnam molestias explicabo, deserunt debitis
+      voluptatem ratione neque possimus aperiam tempore quia reiciendis
+      reprehenderit eius accusantium assumenda atque? Modi doloremque sapiente,
+      cum mollitia fuga numquam aut cupiditate dolor necessitatibus animi!
+    </p>
+  </div>
+  <div class="box">
+    <h3>Box 2</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, ratione
+    quisquam modi quam blanditiis sit nesciunt error nemo fugiat obcaecati.
+  </div>
+  <div class="box">
+    <h3>Box 3</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi corrupti harum
+    magni dolores blanditiis accusamus, aperiam odit ut cum hic inventore
+    tempore perspiciatis saepe exercitationem ex aliquid nisi animi provident.
+  </div>
+  <div class="box">
+    <h3>Box 4</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi corrupti harum
+    magni dolores blanditiis accusamus, aperiam odit ut cum hic inventore
+    tempore perspiciatis saepe exercitationem ex aliquid nisi animi provident.
+  </div>
+  <div class="box">
+    <h3>Box 5</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi corrupti harum
+    magni dolores blanditiis accusamus, aperiam odit ut cum hic inventore
+    tempore perspiciatis saepe exercitationem ex aliquid nisi animi provident.
+  </div>
+  <div class="box">
+    <h3>Box 6</h3>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi corrupti harum
+    magni dolores blanditiis accusamus, aperiam odit ut cum hic inventore
+    tempore perspiciatis saepe exercitationem ex aliquid nisi animi provident.
+  </div>
+</div>
