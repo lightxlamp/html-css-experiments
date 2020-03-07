@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box; /* https://www.w3schools.com/css/css3_box-sizing.asp */ 
+    /* paddings do not increase element's size anymore*/
+    /* does not work with input and text areas */
+    margin: 0; 
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ffffff;
+    color: black;
+    font-size: 15px; /* WHY PXs?? not EMs/REMs? */
+    line-height: 1.5; /* question to guys at monday */
+}
+
+a {
+    color: #262526;
+    text-decoration: none;
+}
+
+ul {
+    /* list-style: none; */
+    list-style: none;
+}
+
+.my-container {
+    width: 90%;
+    max-width: 1100px; /*What about 2k/4k users? Scaling? #mondayQuestion */ /*Update 11:30 Author uses 5k screen */
+    border: 1px solid red;
+    margin: auto; /* only at this step, viewer could understand, why he wrote "list-style: none" before 
+    :p Author's "mistake" */
+}
+
+/* nav */
+
+.my-main-nav {
+    display: flex; /* align inner lines in horizintal row ...  */ 
+    align-items: center; /* align items even vertically - good to know. New info */
+    justify-content: space-between;
+    height: 60px;
+    padding: 20px 0; /* this property changes nothing in our case */
+    font-size: 13px;
+}
+
+.my-main-nav ul{
+    display: flex; /* display ul items in row */
+}
+
+.my-main-nav ul li {
+    padding: 0 10px;
+}
+
+.my-main-nav ul.main-menu {
+    -ms-flex: 1; /* IE 10 */ /* Let all the flexible items be the same length, regardless of its content: */
+    flex: 1; /* https://www.w3schools.com/cssref/css3_pr_flex.asp */
+    /* did not get this ... #mondayQuestion. Todo: Read/play more */
+    margin: 0 0 0 20px;
+}
+
+.my-main-nav * {
+    border: 1px dashed blue;
+}
