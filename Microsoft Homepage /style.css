@@ -41,7 +41,7 @@ ul {
     height: 60px;
     padding: 20px 0; /* this property changes nothing in our case */
     font-size: 13px;
-}
+}   
 
 .my-main-nav ul{
     display: flex; /* display ul items in row */
@@ -49,6 +49,14 @@ ul {
 
 .my-main-nav ul li {
     padding: 0 10px;
+}
+
+.my-main-nav ul li a {
+    padding-bottom: 2px;
+}
+
+.my-main-nav ul li a:hover {
+    border-bottom: 2px solid #262526;
 }
 
 .my-main-nav ul.main-menu {
