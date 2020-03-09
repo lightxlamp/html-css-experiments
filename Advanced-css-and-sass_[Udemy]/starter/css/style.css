@@ -1,0 +1,111 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+    box-sizing: content-box; /* The box-sizing property allows us to include the padding 
+    and border in an element's total width and height. */
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    color: #777777;
+    font-family: "Lato", sans-serif; /* Прикольно, что импортируемый в кавычках вроде */
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7; /* еще раз... что есть базовое значение, которое мы умножаем на 1.7 */
+    padding: 30px;
+}
+
+.header { 
+
+    /* border: 5px solid red; */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(126, 213, 111, 0.8), 
+        rgba(40, 180, 131, 0.8)), 
+        url('../img/hero.jpg');
+    background-size: cover; /* Если уменьшаю масштаб. браузера... картинка теперь не дублируется "6 раз" */
+    background-position: top; /* При смене viewport'а привязка изображения к какой-либо стороне */
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*  Про vh тут сразу знал.. Он сначала px написал*/
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%); */ /* from the site: https://bennettfeely.com/clippy/ */
+    height: 95vh; /* view port height... Крутая штука.. Сейчас поиграемся */
+    /* за 24 минуты видео - хорошо узнал) */
+    position: relative; /* TODO. Зачем он тут... выяснить*/ /* UPD понял... без указания, logo-box считает от начала документа   */
+}
+
+.logo-box{
+    left: 40px;
+    position: absolute;
+    top: 40px;
+}
+
+.logo {
+    height: 35px;
+}
+
+.heading-primary {
+    color: white;
+    text-transform: uppercase;
+}
+
+.heading-primary-main {
+    animation-name: headerTextAnimation;
+    animation-duration: 1s;
+    display: block; /* Я бы просто <br/> Использовал. А тут вот какая хитрость.  
+    Блочный элемент растягивается на всю длинну parent'a и до и после себя ставит linebreaks*/ 
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+}
+
+.heading-primary-sub{
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+}
+
+.header-text-and-button { 
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%); /* element itself */
+}
+
+/* Definition and Usage. The @keyframes rule specifies the animation code. 
+The animation is created by gradually changing from one set of CSS styles to another. 
+During the animation, you can change the set of CSS styles many times. */
+
+@keyframes headerTextAnimation {
+    /* ! Browsers are only optimezed to animate opacity and transform properties */
+    0% {
+        opacity: 0;
+        /* color: red; */
+        transform: translateX(-100px);
+    }
+
+    30% {
+        opacity: .3;
+        /* color: darkorange; */
+    }
+
+    50% {
+        opacity: .5;
+        /* color: blue; */
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        opacity: 1;
+        /* color: yellow; */
+    }
+}
