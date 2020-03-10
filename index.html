@@ -11,13 +11,29 @@
     </div>
 </body>
 <style>
+    html { height: 100vh; }
+
+    body {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+    }
+
+    /* this is the container you want to take the visible viewport  */
+    /* make sure this is top-level in body */
+    #your-app-container {
+      
+    }
     .stas{
         
         /* border: 1px solid red; */
-        height: 100vh; 
-        width: 100vw;
+/*         height: 100vh; 
+        width: 100vw; */
         background-image: url('https://www.imgacademy.com/themes/custom/imgacademy/images/helpbox-contact.jpg');
-        min-height: -webkit-fill-available; 
+/*         min-height: -webkit-fill-available;  */
+        height: 100%;
     }
 </style>
 </html>
