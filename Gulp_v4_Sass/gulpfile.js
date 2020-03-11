@@ -8,7 +8,7 @@ const browserSync = require('browser-sync').create();
 
 function style(){
     // 1) Where is my SCSS? 
-    return gulp.src('./scss/**/*.scss')
+    return gulp.src('./scss/**/*.sass')
     // 2) Pass that file through sass compiler 
         .pipe(sass())
     // 3) Where do I save decompiled css? 
