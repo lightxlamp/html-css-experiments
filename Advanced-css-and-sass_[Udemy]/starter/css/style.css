@@ -5,16 +5,23 @@ Medium green: #55c57a
 Dark green: #28b485
 */
 
-* {
-	box-sizing: content-box;
+*,
+*::after, /* Такой прикол вообще первый раз вижу... */
+*::before {
+    box-sizing: inherit; /* each element will inherit box-sizing from its parent element - body.
+    Slightly better practice */
 	/* The box-sizing property allows us to include the padding 
     and border in an element's total width and height. */
 	margin: 0px;
-	padding: 0px;
+    padding: 0px;
 }
 
 html {
-    font-size: 10px;
+    /* font-size: 10px; */  /* This is a bad practice. May be user has a bad sight
+     and change this setting for his browser. And we overwriting it here */
+    font-size: 62.5%; /* So we take 62.5% from 16px (default browser setting) to get our 
+    easy-to-calculate-rems-on - 10px! Getting 10px in "correct/proper" way */
+    /* rems IE9 => */
 }
 
 body {
@@ -28,7 +35,8 @@ body {
     /* еще раз... что есть базовое значение, которое мы умножаем на 1.7 */
     /* A number that will be multiplied with the current font-size to set the line height */
 	/*padding: 30px; */
-	padding: 3rem;
+    padding: 3rem;
+    box-sizing: content-box;
 }
 
 .header {
@@ -52,7 +60,7 @@ body {
 	/* UPD понял... без указания, logo-box считает от начала документа   */
 }
 
-.logo-box {
+.header__logo-box {
 	/* left: 40px; */
 	left: 4rem;
 	position: absolute;
@@ -60,7 +68,7 @@ body {
 	top: 4rem;
 }
 
-.logo {
+.header__logo {
 	/* height: 35px; */
 	height: 3.5rem;
 }
@@ -72,7 +80,7 @@ body {
 	/* backface-visibility: hidden;  To fix shaky issue. But I can't see it... */
 }
 
-.heading-primary-main {
+.heading-primary--main {
     animation-name: headerTextAnimation;
 	animation-duration: 1s;
 	/* animation-delay: 4s;
@@ -83,10 +91,11 @@ body {
 	/* font-size: 60px; */
 	font-size: 6rem;
 	font-weight: 400;
-	letter-spacing: 35px;
+    /* letter-spacing: 35px; */
+    letter-spacing: 3.5rem;
 }
 
-.heading-primary-sub {
+.heading-primary--sub {
 	/* animation-name: headerSubTextAnimation;
     animation-duration: 1s; 
     animation: name duration timing-function delay iteration-count direction fill-mode; */
@@ -102,7 +111,7 @@ body {
 	margin-bottom: 6rem;
 }
 
-.header-text-and-button {
+.header__text-and-button {
 	position: absolute;
 	left: 50%;
 	top: 40%;
@@ -223,7 +232,7 @@ During the animation, you can change the set of CSS styles many times. */
     /* https://www.w3schools.com/css/css3_transitions.asp */
 }
 
-.btn-white::after {
+.btn--white::after {
     background-color: #fff;
 }
 
@@ -232,12 +241,12 @@ During the animation, you can change the set of CSS styles many times. */
     opacity: 0;
 }
 
-.btn-white {
+.btn--white {
 	background-color: #fff;
 	color: #777;
 }
 
-.btn-animated {
+.btn--animated {
     /* animation-name: headerButtonAnimation;
 	animation-duration: .5s;  */
     animation: headerButtonAnimation .5s ease-out .75s;

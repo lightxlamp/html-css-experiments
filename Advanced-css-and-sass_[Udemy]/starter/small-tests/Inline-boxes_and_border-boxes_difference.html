@@ -1,0 +1,41 @@
+<style>
+    .mc {
+        border: 1px solid red;
+        width: 400px;
+        /* inline boxes - has no width nor height. So 400px was applied to block-boxes (p's) only*/
+    }
+
+    .mc2 {
+        border: 1px solid purple;
+        padding: 30px;
+        margin: 100px;
+        width: 1000px;
+        /* only left-right padding/margin applies to inline boxes */
+    }
+
+    .mc3 {
+        display: inline-block;
+        border: 1px solid green;
+        padding: 20px;
+        width: 300px;
+    }
+</style>
+
+<html>
+<div>
+    <p class="mc">Help me</p>
+    <p class="mc">Lol</p>
+
+    <a href="#" class="mc"> Stas </a>
+    <a href="#" class="mc"> Stas </a>
+
+    <a href="#" class="mc2"> Vas </a>
+    <a href="#" class="mc2"> Vas </a>
+
+    <br /> <br /> <br /> <br /> <br />
+
+    <a href="#" class="mc3"> XZY </a>
+    <a href="#" class="mc3"> XZY </a>
+</div>
+
+</html>
