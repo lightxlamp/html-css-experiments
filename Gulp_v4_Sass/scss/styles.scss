@@ -1,7 +1,99 @@
-$font-stack: Helvetica, sans-serif;
-$primary-color: #333;
+/* 
+COLORS:
+  Light green: #7ed56f
+  Medium green: #55c57a
+  Dark green: #28b485
+*/
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+$color-primary: #55c57a; 
+$color-secondary: #28b485;
+$color-tertiary: #7ed56f; // tertiary - "Высший"
+$color-text-dark: #333;
+$width-button: 150px;
+$color-text: #eee;
+
+@mixin clearFix {
+    &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin style-link-text($color) {
+  text-transform: uppercase;
+  text-decoration: none;
+  //color: $color-text-dark;
+  color: $color;
+}
+
+@function divide($a, $b){
+  @return $a / $b;
+}
+
+nav{
+  margin: divide(60, 2) * 1px; // best practice
+  background-color: $color-primary;
+  @include clearFix;
+}
+
+.buttons {
+  float: right;
+}
+
+
+.navigation {
+  list-style: none;
+  float: left;
+  li {
+    display: inline-block;
+    margin-left: 30px;
+    &:first-child{
+      // :first-child - outputs .navigation li :first-child does not work
+      // &:first-child - outputs .navigation li:first-child - works
+      margin: 0;
+    }
+    a:link {
+      @include style-link-text(red);
+    }
+  }
+}
+
+
+
+.btn-main:link, 
+.btn-hot:link{
+  padding: 10px;
+  display: inline-block;
+  width: $width-button;
+  @include style-link-text(red);
+  text-align: center;
+  border-radius: 100px;
+  color: $color-text; 
+}
+
+
+.btn-main {
+  &:link{
+    background-color: $color-secondary;
+  }
+  
+  &:hover {
+    background-color: darken($color-secondary, 5%);
+  }
+} 
+
+.btn-hot {
+    &:link{
+      background-color: $color-tertiary;
+    }
+  
+    &:hover {
+      background-color: darken($color-tertiary, 5%);
+    }
 }
