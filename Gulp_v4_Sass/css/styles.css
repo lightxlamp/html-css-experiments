@@ -36,12 +36,12 @@ nav {
 .btn-hot:link {
   padding: 10px;
   display: inline-block;
+  text-align: center;
+  border-radius: 100px;
   width: 150px;
   text-transform: uppercase;
   text-decoration: none;
   color: red;
-  text-align: center;
-  border-radius: 100px;
   color: #eee; }
 
 .btn-main:link {
