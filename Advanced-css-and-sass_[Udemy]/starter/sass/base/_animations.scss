@@ -1,0 +1,50 @@
+/* Definition and Usage. The @keyframes rule specifies the animation code. 
+The animation is created by gradually changing from one set of CSS styles to another. 
+During the animation, you can change the set of CSS styles many times. */
+
+@keyframes headerTextAnimation {
+	/* ! Browsers are only optimezed to animate opacity and transform properties */
+	0% {
+		opacity: 0;
+		// color: red; 
+		transform: translateX(-100px);
+	}
+	30% {
+		opacity: .3;
+		// color: darkorange; 
+	}
+	50% {
+		opacity: .5;
+		// color: blue; 
+	}
+	80% {
+		transform: translateX(10px);
+	}
+	100% {
+		opacity: 1;
+		// color: yellow; 
+	}
+}
+
+@keyframes headerSubTextAnimation {
+	0% {
+		opacity: 0;
+		transform: translateX(100rem);
+	}
+	80% {
+		transform: translateX(-1rem);
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes headerButtonAnimation {
+	0% {
+		opacity: 0;
+		transform: translateY(3rem);
+	}
+	100% {
+		opacity: 1;
+	}
+}

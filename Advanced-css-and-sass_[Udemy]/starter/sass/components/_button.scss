@@ -1,0 +1,79 @@
+.btn {
+    /* We use pseudo classes to style elements under a special condition
+    :link is a special state of ... :visited */
+
+    &:link, &visited{
+        text-decoration: none;
+        text-transform: uppercase;
+        padding: 1.5rem 4rem;
+        display: inline-block; /* Я бы просто block поставил... И это оказывается бы проблема была... */
+        /* I knew only display:block.. What the difference between them
+        https://www.computerhope.com/issues/ch001717.htm. Got it know :p Display block takes all row/line. 
+        inline-block behaves like inline element. Кстати у автора оговорка кстати на 7:10 */
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;  /* this position was added, so btn::after absolute can refer to it */
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); */
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+        /* x-offset, y-offset, blur */
+
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0;
+    
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
+        /* when user presses the button :active pseudo class applies */
+    }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        /* to hide new button behind */
+        /* ::after - creates a copy of a button */
+        position: absolute; 
+        /* position will try to find first ref. The first ref now is "header text and button" div. We need to change it */
+        /* so we added position relative to .btn:link */
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: .4s;
+        /* https://www.w3schools.com/css/css3_transitions.asp */
+    }
+
+    &--white {
+        background-color: $color-white;
+        color: $color-grey-dark;
+
+        &::after{
+            background-color: $color-white;
+        }
+    }
+
+    &--animated {
+        /* animation-name: headerButtonAnimation;
+        animation-duration: .5s;  */
+        animation: headerButtonAnimation .5s ease-out .75s;
+        animation-fill-mode: backwards; /* added because after adding delay. 4th animation param*/
+        /* The animation-fill-mode property defines what values 
+        are applied by an animation outside the time it is executing. 
+        animation-fill-mode: backwards; also worked for me in this case - the same way
+        animation-fill-mode = Определяет, какие стили должны применяться к элементу, когда анимация не проигрывается. 
+        Например, после её завершения или при остановке. 
+        По умолчанию, в момент окончания анимации стиль элемента возвращается к исходному, 
+        свойство animation-fill-mode позволяет изменить это поведение и сделать так, чтобы стиль элемента 
+        оставался как у последнего ключевого кадра.
+        */
+    }
+}

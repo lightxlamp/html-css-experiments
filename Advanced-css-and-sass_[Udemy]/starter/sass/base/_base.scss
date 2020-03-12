@@ -1,0 +1,23 @@
+*,
+*::after, /* Такой прикол вообще первый раз вижу... */
+*::before {
+    box-sizing: inherit; /* each element will inherit box-sizing from its parent element - body.
+    Slightly better practice */
+	/* The box-sizing property allows us to include the padding 
+    and border in an element's total width and height. */
+	margin: 0px;
+    padding: 0px;
+}
+
+html {
+    /* font-size: 10px; */  /* This is a bad practice. May be user has a bad sight
+     and hes/she changed this setting for his/her browser. And we overwriting this setting here */
+    font-size: 62.5%; /* So we take 62.5% from 16px (default browser setting) to get our 
+    easy-to-calculate-rems-on - 10px! Getting 10px in "correct/proper" way */
+    /* rems IE9 => */
+    /* font-size was not moved into "typography" section. Because it like an overall setting for all sizes*/
+}
+
+body {
+    box-sizing: content-box;
+}

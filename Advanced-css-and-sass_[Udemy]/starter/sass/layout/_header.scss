@@ -1,0 +1,40 @@
+.header {
+	/* border: 5px solid red; */
+	background-image: linear-gradient( to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
+	background-size: cover;
+	/* Если уменьшаю масштаб. браузера... картинка теперь не дублируется "6 раз" */
+	background-position: top;
+	/* При смене viewport'а привязка изображения к какой-либо стороне */
+	clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+	/*  Про vh тут сразу знал.. Он сначала px написал*/
+	/* clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%); */
+    /* from the site: https://bennettfeely.com/clippy/ */
+    /* CSS свойство clip-path создает ограниченную область, которая определяет какая часть элемента должна быть видимой. */
+    /* more info about clip-path: https://developer.mozilla.org/ru/docs/Web/CSS/clip-path */
+	height: 95vh;
+	/* view port height... Крутая штука.. Сейчас поиграемся */
+	/* за 24 минуты видео - хорошо узнал) */
+	position: relative;
+	/* TODO. Зачем он тут... выяснить*/
+    /* UPD понял... без указания, logo-box считает от начала документа   */
+    
+    // & - means ".header" in this case so we can do this way
+    &__logo-box {
+        left: 4rem;
+        position: absolute;
+        top: 4rem;
+    }
+
+    &__logo{
+        height: 3.5rem;
+    }
+
+    &__text-and-button{
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        transform: translate(-50%, -50%); /* element itself */
+        /* https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate */
+        text-align: center; /* aligns button at center. Insead of applyting transform to button */   
+    }
+}
