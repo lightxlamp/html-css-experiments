@@ -1,0 +1,43 @@
+.composition {
+    position: relative;
+    &__photo{
+        width: 55%;
+        box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: .4);
+        border-radius: 2px;
+        position: absolute; // will be placed according to reference. First parent with position (any.. i think)
+        // Although i thought we will do this component using z-index.. interesting
+        z-index: 10; // ok.. we are using z-index in the end..
+        transition: all .2s;
+        outline-offset: 1.5rem;
+
+        &--p1 {
+            left: 0; 
+            top: -2rem;
+        } 
+        
+        &--p2 {
+            right: 0; 
+            top: 2rem;
+        } 
+        
+        &--p3 {
+            left: 20%; 
+            top: 10rem;
+        }
+
+        &:hover {
+            outline: 1.5rem solid $color-primary; 
+            // https://www.w3schools.com/css/css_outline.asp
+            // An outline is a line that is drawn around elements, OUTSIDE the borders, to make the element "stand out".
+            transform: scale(1.05) translateY(-.5rem); // lesson #37. 16m: 37 sec - what a sound XD He Lllloves what he is doing
+            box-shadow: 0 2.5rem 4rem rgba($color: $color-black, $alpha: .5);
+            z-index: 20;
+        }
+    }
+
+    // composition:hover composition__photo:not(:hover)
+    // I've almost got it.. I knew only the second part composition__photo:not(:hover)..
+    &:hover &__photo:not(:hover) {
+        transform: scale(.95);
+    }
+}
