@@ -11,7 +11,7 @@
         font-size: 6rem;
         margin-bottom: .5rem;
         display: inline-block; // sizing problems without it
-        background: linear-gradient(to right, $color-primary-light, $color-primary-dark);
+        background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);
         -webkit-background-clip: text; // оставляет бэкграунд только под текстом (в форме текста)
         color: transparent; // теперь делаем буквы прозрачными. А бэкграунд красивый. По трафаретику остался ) nicuuuu
     }
