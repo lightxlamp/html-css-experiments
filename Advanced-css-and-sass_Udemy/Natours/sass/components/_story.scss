@@ -1,0 +1,43 @@
+.story {
+    width: 75%;
+    margin: 0 auto;
+    box-shadow: 0 3rem 6em rgba($color-black, $alpha: .1);
+    background-color: $color-white;
+    border-radius: 3px;
+    padding: 6rem;
+    padding-left: 9rem;
+    // padding: 36rem; // Played with border box to practice 
+    // box-sizing: border-box; // Played with border box to practice 
+    font-size: $default-font-size;
+    transform: skewX(-12deg);
+
+    & > * {
+        transform: skewX(12deg); 
+    }
+
+    figure {
+        transform: skewX(12deg); 
+    }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left; // We want this element sitting on the left side
+        // In order to make the rest of the content to float around it
+        -webkit-shape-outside: circle(50% at 50% 50%); // does not work without float. Sure :p
+        shape-outside: circle(50% at 50% 50%); // does not work without float. Sure :p But.. need width and height too
+        -webkit-clip-path: circle(50% at 50% 50%); 
+        clip-path: circle(50% at 50% 50%); 
+        // The best way to move around element that is floated - not to mess with margins. We should just use transform
+        transform: translateX(-3rem);
+        margin-right: 3rem;
+    }
+
+    &__image {
+        height: 100%;
+    }
+
+    &story__text {
+        
+    }
+}
