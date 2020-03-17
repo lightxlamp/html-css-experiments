@@ -31,13 +31,44 @@
         // The best way to move around element that is floated - not to mess with margins. We should just use transform
         transform: translateX(-3rem);
         margin-right: 3rem;
+        position: relative;
     }
 
     &__image {
         height: 100%;
+        transform: translate(-4rem) scale(1.4); // to move nice lady exactly at the center of a circle :p
+        backface-visibility: hidden; // his circle is not round after applying transform. So he uses backface visibility
+        // I don't need it
+        // Update: no, I need it. Blinking lines appeared at left/right sides from a circle. 
+        transition: all .5s;
     }
 
     &story__text {
         
+    }
+
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        text-align: center;
+        opacity: 0;
+        transition: all .5s;
+        backface-visibility: hidden; // fixes shaky movings at the end of animation. But I don't have them
+        // update, we need it. Otherwise image has square border around it
+    }
+
+    &:hover &__caption {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }    
+    
+    &:hover &__image {
+        transform: translate(-4rem) scale(1);
+        filter: blur(3px) brightness(80%); // we can set brightness to 150% for example
     }
 }
