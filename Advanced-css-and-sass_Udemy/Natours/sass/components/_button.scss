@@ -2,7 +2,7 @@
     /* We use pseudo classes to style elements under a special condition
     :link is a special state of ... :visited */
 
-    &:link, &visited{
+    &, &:link, &:visited{ // & - is just for button
         text-decoration: none;
         text-transform: uppercase;
         padding: 1.5rem 4rem;
@@ -13,6 +13,11 @@
         border-radius: 10rem;
         transition: all .2s;
         position: relative;  /* this position was added, so btn::after absolute can refer to it */
+        font-size: $default-font-size;
+
+        //Changes for <button> element
+        cursor: pointer;
+        border: none;
     }
 
     &:hover {
@@ -28,7 +33,7 @@
         }
     }
 
-    &:active {
+    &:active, &:focus {
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, 0.2);
         /* when user presses the button :active pseudo class applies */
