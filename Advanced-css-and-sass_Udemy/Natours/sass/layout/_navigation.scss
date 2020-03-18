@@ -13,6 +13,7 @@
         top: 6rem;
         right: 6rem;
         z-index: 1001;
+        box-shadow: 0 1rem 3rem rgba($color-black, .1);
     }
 
     &__background {
@@ -24,8 +25,8 @@
         top: 6.5rem;
         right: 6.5rem;
         z-index: 999;
-
-        transform: scale(80); // Проверить на 4к мониторе... Не облажается ли... Но прикольно конечно. Дизайн градиента разный
+        transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
+        // transform: scale(80); // Проверить на 4к мониторе... Не облажается ли... Но прикольно конечно. Дизайн градиента разный
         // для разных мониторов получится. Check on 4k monitor. Is scale(80) enough for it? Gradient will be different for 
         // small and huge monitors 
     }
@@ -35,15 +36,19 @@
         // Just wanted to create snippet for this. But author tell a better method
         list-style: none;
         text-align: center;
+        width: 100%;
     }
 
     &__nav {
         height: 100vh;
-        width: 100%;
+        width: 0; // to disable invisible buttons click when user hovers outdoors logo (opactity: 0)
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0;
         z-index: 1000;
+        opacity: 0;
+        //transition: opacity .8s; //only opacity, because a new width should appear instantly!
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55)  ; //he changed his mind :p
     }
 
     &__item {
@@ -80,6 +85,15 @@
             // This transformation is characterized by a two-dimensional vector. Its coordinates define how much 
             // the element moves in each direction.
         }
+    }
+
+    &__checkbox:checked ~ &__background {
+        transform: scale(80);
+    }
+    
+    &__checkbox:checked ~ &__nav {
+        opacity: 100; // I've made mistake. But it still works.. 100 instead of 1
+        width: 100%;
     }
 }
 
