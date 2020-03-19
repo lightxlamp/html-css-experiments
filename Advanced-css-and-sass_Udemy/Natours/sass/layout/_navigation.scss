@@ -5,7 +5,6 @@
 
     &__button {
         background-color: $color-white;
-        border: 2px solid red;
         height: 7rem;
         width: 7rem;
         border-radius: 50%;
@@ -14,6 +13,16 @@
         right: 6rem;
         z-index: 1001;
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
+        text-align: center; // to center hamburger menu icons
+        cursor: pointer;
+    }
+
+    &__button:hover &__icon::before {
+        top: -1rem;
+    } 
+    
+    &__button:hover &__icon::after {
+        top: 1rem;
     }
 
     &__background {
@@ -87,6 +96,7 @@
         }
     }
 
+    // Functionality
     &__checkbox:checked ~ &__background {
         transform: scale(80);
     }
@@ -94,6 +104,53 @@
     &__checkbox:checked ~ &__nav {
         opacity: 100; // I've made mistake. But it still works.. 100 instead of 1
         width: 100%;
+    }
+
+    // Icon
+    &__icon {
+        position: relative;
+        margin-top: 3.5rem;
+
+        &,  
+        &::before,
+        &::after {
+            width: 3rem;
+            height: 2px; // width of hamburger menu single line
+            background-color: $color-grey-dark-3;
+            display: inline-block;
+        }
+
+        &::before,
+        &::after { // in order to appear on the page ::before and ::after need their "content" property be defined
+            content: "";
+            position: absolute;
+            left: 0;
+            transition: all .2s;
+        }
+
+        &::before {
+            top: -.8rem;
+        }  
+        
+        &::after {
+            top: .8rem;
+        }
+    }
+
+    &__checkbox:checked + &__button &__icon {
+        background-color: transparent;
+    }  
+    
+    &__checkbox:checked + &__button &__icon::before {
+        top: 0;
+        //transform: rotate(45deg); 
+        transform: rotate(135deg); 
+    }   
+    // Don't think that u have to able to code this really quickly like I am doing here, because that not a reality
+    &__checkbox:checked + &__button &__icon::after {
+        top: 0;
+        //transform: rotate(-45deg);
+        transform: rotate(-135deg);
     }
 }
 
