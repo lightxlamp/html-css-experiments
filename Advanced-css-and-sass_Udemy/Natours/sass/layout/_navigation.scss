@@ -130,6 +130,8 @@
 
         &::before {
             top: -.8rem;
+            //The ::before pseudo-element can be used to insert some content before the content of an element.
+            //EG: inserting an image before the content of each <h1> element:
         }  
         
         &::after {

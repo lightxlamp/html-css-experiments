@@ -1,0 +1,95 @@
+.popup {
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba($color-black, .8);
+    z-index: 10000;
+    opacity: 0;
+    // display: none; // Author: We can not animate this. Stas: I already know.. 
+    // Author: There is no numbers so we can not animate it. Stas: Wow... I see.... :P <3
+    visibility: hidden;
+    transition: all .2s;
+    
+    &__content { 
+        width: 75%;
+        background-color: $color-white;
+        //@include centerHorizontalVertical;
+        box-shadow: 0 2rem 4rem rgba($color: $color-black, $alpha: .2);
+        border-radius: $border-radius;
+        display: table;
+        overflow: hidden; // to return rounded corners stolen by images from the left side
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(.25);
+        transition: all .5s .2s; //small delay (third value)
+    }
+
+    &__left {
+        width: 33.33333%;
+        //float: left;
+        display: table-cell;
+    }
+
+    &__right {
+        width: 66.66667%;
+        //float: left;
+        display: table-cell;
+        vertical-align: middle; // this property can be used in a table cells
+        padding: 0rem 5rem; // authors has 3rem 5rem
+    }
+
+    &__img {
+        display: block;
+        width: 100%;
+    }
+
+    &__text {
+        font-size: 1.4rem;
+        margin-bottom: 4rem;
+        
+        column-count: 2; // nice propety
+        column-gap: 4rem; // space between columns. Default 1em
+        column-rule: 1px solid $color-grey-light-2; // Nice border between columns  
+
+        -moz-column-count: 2; 
+        -moz-column-gap: 4rem;
+        -moz-column-rule: 1px solid $color-grey-light-2; 
+
+        -moz-hyphens: auto; 
+        -ms-hyphens: auto; 
+        -webkit-hyphens: auto; 
+        hyphens: auto; // красивые переносы слов - In order to work it properly <html lang="en"> should be set
+    }
+    
+    &:target { // when user clicks at button which has a anchor id
+        opacity: 1;
+        visibility: visible;
+    }  
+
+    &:target &__content {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    &__close{
+        &:link,
+        &:visited{
+            color: $color-grey-dark;
+            position: absolute;
+            top: 2.5rem;
+            right: 2.5rem;
+            font-size: 3rem;
+            text-decoration: none;
+            display: inline-block;
+            line-height: 1;
+        }
+
+       &:hover{
+           color: $color-primary;
+       }
+    }
+}
