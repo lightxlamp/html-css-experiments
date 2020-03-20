@@ -19,10 +19,15 @@
 	/* TODO. Зачем он тут... выяснить*/
     /* UPD понял... без указания, logo-box считает от начала документа   */
     
+    @include respond(tab-port) { 
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
+    }
+
     @include respond(phone) { 
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
         clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
-    }
+    }  
     
     // & - means ".header" in this case so we can do this way
     &__logo-box {

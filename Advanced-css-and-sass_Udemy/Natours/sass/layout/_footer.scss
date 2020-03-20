@@ -11,6 +11,10 @@
     &__logo-box {
         text-align: center; // image is inline element. So text property can be applied to it
         margin-bottom: 8rem;
+
+        @include respond(tab-port) { 
+            margin-bottom: 6rem;
+        }   
     }
 
     &__logo {
