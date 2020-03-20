@@ -6,9 +6,17 @@
 
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
+        @include respond(tab-port) { // width < 900?
+            margin-bottom: $gutter-vertical-for-small-screen;
+        }
     }
 
     @include clearfix;
+
+    @include respond(tab-port) { // width < 900?
+        max-width: 50rem; // fixing width of cards and other elements
+        padding: 0 3rem;
+    }
 
     [class^="col-"] { //^ starts with "col-". * contains "col-"
         //background-color: orangered;
@@ -16,6 +24,14 @@
 
         &:not(:last-child){
             margin-right: $gutter-horizontal;
+            @include respond(tab-port) { // width < 900?
+                margin-right: 0 !important;
+                margin-bottom: $gutter-vertical-for-small-screen;
+            }
+        }
+
+        @include respond(tab-port) { // width < 900?
+            width: 100% !important; 
         }
     }
 

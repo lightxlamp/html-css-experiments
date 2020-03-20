@@ -15,6 +15,16 @@
         box-shadow: 0 1rem 3rem rgba($color-black, .1);
         text-align: center; // to center hamburger menu icons
         cursor: pointer;
+
+        @include respond(tab-port) { 
+            top: 4rem;
+            right: 4rem;
+        }    
+        
+        @include respond(tab-port) { 
+            top: 3rem;
+            right: 3rem;
+        }
     }
 
     &__button:hover &__icon::before {
@@ -38,6 +48,15 @@
         // transform: scale(80); // Проверить на 4к мониторе... Не облажается ли... Но прикольно конечно. Дизайн градиента разный
         // для разных мониторов получится. Check on 4k monitor. Is scale(80) enough for it? Gradient will be different for 
         // small and huge monitors 
+        @include respond(tab-port) { 
+            top: 4.5rem;
+            right: 4.5rem;
+        }      
+        
+        @include respond(tab-port) { 
+            top: 3.5rem;
+            right: 3.5rem;
+        }
     }
 
     &__list {

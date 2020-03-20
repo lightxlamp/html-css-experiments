@@ -36,4 +36,10 @@ html {
 
 body {
     box-sizing: content-box;
+    /*padding: 30px; */
+    padding: 3rem;
+
+    @include respond(tab-port) { // width < 900?
+        padding: 0;
+    }
 }
