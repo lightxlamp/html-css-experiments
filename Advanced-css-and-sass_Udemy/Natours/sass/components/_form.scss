@@ -16,6 +16,10 @@
         width: 90%;
         transition: all .3s;
 
+        @include respond(tab-port){
+            width: 100%;
+        } 
+
         &:focus {
             outline: none;
             box-shadow: 0 1rem 2rem rgba($color-black, $alpha: .1);
@@ -44,12 +48,17 @@
         opacity: 0;
         visibility: hidden; // we can not animate visibility    
         transform: translateY(-4rem);
-        display: block;
+        //display: block;
     }
 
     &__radio-group {
         width: 49%;
         display: inline-block;
+
+        @include respond(tab-port){
+            width: 100%;
+            margin-bottom: 2rem;
+        }
     }
 
     &__radio-label {
@@ -60,8 +69,8 @@
     } 
     
     &__radio-button {
-        height: 2rem;
-        width: 2rem; // author has 3rems here. Smth wrong with my rems
+        height: 3rem;
+        width: 3rem; // author has 3rems here. Smth wrong with my rems
         border: 5px solid $color-primary;
         border-radius: 50%;
         display: inline-block;
