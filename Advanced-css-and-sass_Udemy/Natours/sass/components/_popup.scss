@@ -26,7 +26,6 @@
         left: 50%;
         transform: translate(-50%, -50%) scale(.25);
         transition: all .5s .2s; //small delay (third value)
-        padding-bottom: 1rem;
     }
 
     &__left {
@@ -49,6 +48,10 @@
         vertical-align: middle; // this property can be used in a table cells
         padding: 0rem 5rem; // authors has 3rem 5rem
     }
+
+    // &__right h2 {
+    //     font-size: 2rem ;
+    // }
 
     &__img {
         display: block;
@@ -82,6 +85,11 @@
         -webkit-hyphens: auto; 
         hyphens: auto; // красивые переносы слов - In order to work it properly <html lang="en"> should be set
     }
+
+    &__text + a {
+        margin-bottom: 1rem;
+    }
+    
     
     &:target { // when user clicks at button which has a anchor id
         opacity: 1;

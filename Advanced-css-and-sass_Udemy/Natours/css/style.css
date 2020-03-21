@@ -589,8 +589,7 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.25);
-    transition: all .5s .2s;
-    padding-bottom: 1rem; }
+    transition: all .5s .2s; }
   .popup__left {
     width: 33.33333%;
     display: table-cell; }
@@ -629,6 +628,8 @@ body {
       .popup__text {
         column-count: 1;
         -moz-column-count: 1; } }
+  .popup__text + a {
+    margin-bottom: 1rem; }
   .popup:target {
     opacity: 1;
     visibility: visible; }
