@@ -26,12 +26,20 @@
         left: 50%;
         transform: translate(-50%, -50%) scale(.25);
         transition: all .5s .2s; //small delay (third value)
+        padding-bottom: 1rem;
     }
 
     &__left {
         width: 33.33333%;
         //float: left;
         display: table-cell;
+
+        @include respond(tab-land) { 
+            display: none;
+        }   
+        @include respond(tab-port) { 
+            display: none;
+        }   
     }
 
     &__right {
@@ -58,6 +66,16 @@
         -moz-column-count: 2; 
         -moz-column-gap: 4rem;
         -moz-column-rule: 1px solid $color-grey-light-2; 
+
+        @include respond(tab-land) { 
+            column-count: 1; 
+            -moz-column-count: 1; 
+        }   
+
+        @include respond(tab-port) { 
+            column-count: 1; 
+            -moz-column-count: 1; 
+        } 
 
         -moz-hyphens: auto; 
         -ms-hyphens: auto; 
