@@ -10,7 +10,14 @@
     // display: none; // Author: We can not animate this. Stas: I already know.. 
     // Author: There is no numbers so we can not animate it. Stas: Wow... I see.... :P <3
     visibility: hidden;
+   
     transition: all .2s;
+
+    @supports (-webkit-backdrop-filter: blur(20px)) or (backdrop-filter: blur(20px)) {
+        background-color: rgba($color-black, .3);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+    }
     
     &__content { 
         width: 75%;
