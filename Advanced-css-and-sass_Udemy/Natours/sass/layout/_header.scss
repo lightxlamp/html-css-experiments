@@ -1,6 +1,8 @@
 .header {
 	/* border: 5px solid red; */
-	background-image: linear-gradient( to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), url('../img/hero.jpg');
+    background-image: 
+        linear-gradient( to right bottom, rgba($color-primary-light, 0.8), rgba($color-primary-dark, 0.8)), 
+        url('../img/hero-small.jpg');
 	background-size: cover;
 	/* Если уменьшаю масштаб. браузера... картинка теперь не дублируется "6 раз" */
 	background-position: top;
@@ -18,6 +20,19 @@
 	position: relative;
 	/* TODO. Зачем он тут... выяснить*/
     /* UPD понял... без указания, logo-box считает от начала документа   */
+
+    @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em),
+        only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em),
+        only screen and (min-width: 125em) { // 2000px 
+    background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.8),
+        rgba($color-primary-dark, 0.8)),
+    url(../img/hero.jpg);
+    }
+
+    //dpi dots per inch
+    // 192 is default resolution of apple retina screen
     
     @include respond(tab-port) { 
         -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);

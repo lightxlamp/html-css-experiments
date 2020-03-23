@@ -803,7 +803,7 @@ body {
 
 .header {
   /* border: 5px solid red; */
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero.jpg");
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url("../img/hero-small.jpg");
   background-size: cover;
   /* Если уменьшаю масштаб. браузера... картинка теперь не дублируется "6 раз" */
   background-position: top;
@@ -821,6 +821,9 @@ body {
   position: relative;
   /* TODO. Зачем он тут... выяснить*/
   /* UPD понял... без указания, logo-box считает от начала документа   */ }
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
   @media only screen and (max-width: 56.25em) {
     .header {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 80vh, 0 100%);
