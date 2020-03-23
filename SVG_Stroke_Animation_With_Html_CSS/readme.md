@@ -7,3 +7,7 @@ Authors of icons:
 "002-sex-symbol" - Freepik - https://www.flaticon.com/authors/freepik
 
 "003-money" - Freepik - https://www.flaticon.com/authors/freepik
+
+"browser" - Freepik - https://www.flaticon.com/authors/freepik
+
+"google" - Freepik - https://www.flaticon.com/authors/freepik
