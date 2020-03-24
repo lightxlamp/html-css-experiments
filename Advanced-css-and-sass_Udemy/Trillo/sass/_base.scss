@@ -1,6 +1,5 @@
-
-// COLORS
 :root {
+    // COLORS
     --color-primary: #eb2f64;
     --color-primary-light: #FF3366;
     --color-primary-dark: #BA265D;
@@ -11,6 +10,9 @@
     --color-grey-dark-1: #333;
     --color-grey-dark-2: #777;
     --color-grey-dark-3: #999;
+
+    //SHADOWS
+    --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, .3);
 }
 
 // GLOBAL RESET
@@ -39,7 +41,5 @@ body {
     //background-color: #eb2f64; 
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 100vh;
-
-       
+    min-height: 100vh;      
 }
