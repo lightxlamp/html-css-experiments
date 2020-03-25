@@ -246,11 +246,11 @@
 .gallery {
     display: flex;
 
-    &__item {
-        // border: 1px solid black;
-        // height: 100px;
-        //width: 30%;
-    }
+    // &__item {
+    //     // border: 1px solid black;
+    //     // height: 100px;
+    //     //width: 30%;
+    // }
     
     &__photo {
         width: 100%;
@@ -426,7 +426,9 @@
         // for newer browsers 
         background-color: var(--color-primary); //similar to clipping from prev project
         -webkit-mask-image: url('../img/chevron-thin-right.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+        mask-image: url('../img/chevron-thin-right.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
         -webkit-mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
+        mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
         // mask allow us to see background. (throught specified shape (mask-image))
 
 
