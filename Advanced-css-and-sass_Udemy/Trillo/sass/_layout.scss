@@ -44,6 +44,7 @@
     padding: 4.5rem;
     background-color: var(--color-grey-light-1);
     border-bottom: var(--line);
+    font-size: 1.4rem; // to set this font-size to description and reviews blocks as well
 }
 
 .description {
@@ -52,10 +53,12 @@
     box-shadow: var(--shadow-light);
     padding: 3rem;
     margin-right: 4.5rem;
-    font-size: 1.4rem;
 }
 
 .user-reviews {
-    background-color: green;
+    //background-color: green;
     flex: 1; //remaining space
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
