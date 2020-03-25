@@ -21,6 +21,10 @@
     --line: 1px solid var(--color-grey-light-2);
 }
 
+$bp-largest: 75em; // 1200px / 16 = 75
+$bp-large: 68.75em; // 1100px / 16 = 68.75
+$bp-medium: 56.25em; // 900px / 16 = 56.25
+
 // GLOBAL RESET
 * {
     margin: 0;
@@ -36,6 +40,14 @@
 html {
     box-sizing: border-box;
     font-size: 62.5%; // 1 rem = 10px (if user did not change his browser's default font size)
+
+    @media only screen and (max-width: $bp-large) {
+       // 1 rem is equal 10px. Let's decrease 1rem value for smaller displays
+       font-size: 50%; // 8 / 16 = .5
+       // But the width of the container now is not 1200px (120rem * 10), but 960px! (120rem * 8)
+       // So ugly parts of background are visible again. So we adding max-width: 100% and width: 100% to 
+       // the "largest" media query
+    }
 }
 
 body {
