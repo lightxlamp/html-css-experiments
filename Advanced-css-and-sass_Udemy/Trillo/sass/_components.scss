@@ -335,7 +335,6 @@
             font-size: 1.8rem;
         }
     }  
-
 }
 
 // ++++++++++++++++++++++++++++++ //
@@ -420,18 +419,20 @@
         margin-right: .7rem;
 
         // We can't change color of icon when we adding it this way. So just leave this for older browsers
-        //background-image: url('../img/chevron-thin-right.svg');
-        //background-size: cover;
+        background-image: url('../img/chevron-thin-right.svg');
+        background-size: cover;
 
         // for newer browsers 
-        background-color: var(--color-primary); //similar to clipping from prev project
-        -webkit-mask-image: url('../img/chevron-thin-right.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
-        mask-image: url('../img/chevron-thin-right.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
-        -webkit-mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
-        mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
-        // mask allow us to see background. (throught specified shape (mask-image))
-
-
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: var(--color-primary); //similar to clipping from prev project
+            -webkit-mask-image: url('../img/chevron-thin-right.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            mask-image: url('../img/chevron-thin-right.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            -webkit-mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
+            mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
+            // mask allow us to see background. (throught specified shape (mask-image))
+            background-image: none;
+        }
     }
 }
 
