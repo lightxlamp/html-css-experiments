@@ -14,6 +14,13 @@
     align-items: center;
     justify-content: center;
 
+    @media only screen and (max-width: $bp-smallest) {
+        order: 1; // because other boxes have 0 order. (like in example. Box with order "-1" became first)
+        // now we need search to become last. To move search to a new line we should use wrap on a header
+        flex: 0 0 100%;
+        background-color: var(--color-grey-light-2);
+    }
+
     &__input {
         font-family: inherit; // input do not inherit automatically 
         font-size: inherit;
@@ -30,6 +37,11 @@
             outline: none;
             width: 100%;
             background-color: var(--color-grey-light-3);
+
+            @media only screen and (max-width: $bp-smallest) {
+                width: 95%;
+                background-color: var(--color-grey-light-2);
+            }
         }
 
         &::-webkit-input-placeholder {
@@ -40,6 +52,10 @@
 
     &__input:focus + &__button {
         background-color: var(--color-grey-light-3);
+        
+        @media only screen and (max-width: $bp-smallest) {
+            background-color: var(--color-grey-light-2);
+        }
     }   
 
     &__button {
@@ -189,6 +205,11 @@
             justify-content: center;
             padding: 2rem;
         }
+
+        @media only screen and (max-width: $bp-small) {
+           flex-direction: column;
+           padding: 1.5rem .5rem;
+        }
     }  
     
     &__icon {
@@ -197,6 +218,13 @@
         margin-right: 2rem;
         //fill: var(--color-grey-light-1);
         fill: currentColor; // nicuuu. (color of the current element or a "color" of a parent element)
+
+        @media only screen and (max-width: $bp-small) {
+           margin-right: 0;
+           margin-bottom: 0.7px;
+           width: 1.5rem;
+           height: 1.5rem;
+         }
     }
 }
 
@@ -243,6 +271,11 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         padding: 1.5rem 3rem;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+            padding: 1.25rem 2rem;
+        }
     } 
 
     &__stars {
@@ -279,16 +312,28 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+
+        @media only screen and (max-width: $bp-small) {
+            padding: 0 1.5rem;
+        }
     }  
     &__rating-count {
         font-size: .8rem;
         text-transform: uppercase;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: .5rem;
+        }
     }  
 
     &__rating-average {
         font-size: 2.25rem;
         font-weight: 300;
         margin-bottom: -3px;
+
+        @media only screen and (max-width: $bp-small) {
+            font-size: 1.8rem;
+        }
     }  
 
 }
