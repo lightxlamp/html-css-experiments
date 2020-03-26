@@ -5,7 +5,29 @@
     margin: 15rem 0;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    //grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     grid-gap: 6rem;
+    align-items: start;
+}
 
+.feature {
+    display: grid;
+    // min-content - i we decide to change icon's width, then we don't need to change anything with this prop
+    grid-template-columns: min-content 1fr; // 1fr occupy the rest 
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon {
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem; // without height... blank space left on the bottom of the icon
+        grid-row: 1 / -1; // -1 works with explicit grid. But we have implicit grid. Because we have not defined the rows
+        grid-row: 1 / span 2;
+        transform: translateY(-1rem);
+    } 
+    
+    &__text {
+        font-size: 1.7rem;
+    }
 }
