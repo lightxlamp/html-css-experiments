@@ -25,13 +25,50 @@
     }
 
     &__seenon-text {
+        display: grid;
+        grid-template-columns: 1fr max-content 1fr;
+        // align-content: center;
+        // justify-content: center;
+        grid-column-gap: 1.5rem;
+        align-items: center;
+
+        font-size: 1.6rem;
+        color: $color-grey-light-2;
+
+        // &::before {
+        //     content: "";
+        //     height: 1px;
+        //     display: block;
+        //     background-color: currentColor;
+        // }
+
+        // &::after {
+        //     content: "";
+        //     height: 1px;
+        //     display: block;
+        //     background-color: currentColor;
+        // } 
         
+        &::before, 
+        &::after {
+            content: "";
+            height: 1px;
+            display: block;
+            background-color: currentColor;
+        }
     } 
 
     &__seenon-logos {
+        border: 1px solid red;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-column-gap: 3rem;
+        justify-items: center;
+        align-items: center;
 
-       img {
+        img {
             height: 2.5rem;
-       } 
+            filter: brightness(70%);
+        } 
     }  
 }
