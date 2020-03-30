@@ -1,0 +1,22 @@
+{
+  "name": "stas-test",
+  "version": "0.0.1",
+  "description": "First try of mobile-first strategy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frameshft/stas-test.git"
+  },
+  "keywords": [
+    "css"
+  ],
+  "author": "lightxlamp",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frameshft/stas-test/issues"
+  },
+  "homepage": "https://github.com/frameshft/stas-test#readme"
+}
