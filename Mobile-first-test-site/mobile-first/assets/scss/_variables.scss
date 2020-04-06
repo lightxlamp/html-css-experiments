@@ -1,10 +1,9 @@
 // COLORS
-$color-primary: #FA6980;
+$color-primary: #FA6980; 
 $color-secondary: #f6f8f9; 
 $color-white: #fff;
 $color-black: #202124;
-
-$color-secondary: #101d2c;
+$color-menu-links: #343638;
 
 $color-grey-light-1: #EBEDED;
 //$color-grey-light-2: #00000033; 
@@ -12,4 +11,15 @@ $color-grey-light-1: #EBEDED;
 $color-grey-dark-1: #CBD0D3;
 $color-grey-dark-2: #A6ADB4;
 
-$font-family: 'Helvetica Neue', Arial, sans-serif;
+//$bp-tablet: "768px";
+//$bp-desktop: "1440px";
+//$bp-large-desktop: "1800px";
+
+$bp-tablet: "48em"; // 768px / 16 = 48em
+$bp-desktop: "90em"; // 1440px / 16 = 90em
+$bp-large-desktop: "113em"; // 1800px / 16 = 117.5em // Does not work with 117. I don't know why. So changed 113 for now
+
+$border-radius: 6px;
+
+$font-display: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+//$font-display: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;

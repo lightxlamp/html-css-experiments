@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "/Users/stanislav/VisualStudioProjects/stas-test"
+		},
+		{
+			"path": "/Users/stanislav/VisualStudioProjects/html-css-experiments/Advanced-css-and-sass_Udemy/Nexter"
+		},
+		{
+			"path": "/Users/stanislav/VisualStudioProjects/html-css-experiments/Advanced-css-and-sass_Udemy/Trillo"
+		},
+		{
+			"path": "/Users/stanislav/VisualStudioProjects/html-css-experiments/Advanced-css-and-sass_Udemy/Natours"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "stas-test"
+	}
+}

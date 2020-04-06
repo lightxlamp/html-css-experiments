@@ -1,31 +1,360 @@
-.logged-in-user {
-    &__photo{
-        //margin-right: 1rem;
-        height: 1.6rem; // 3rem on desktop
-        width: 1.6rem; // 3rem on desktop
-        border-radius: 50%;
-    }
-}
+@import url(//db.onlinewebfonts.com/c/4eea0b56eeb6549def65619b1957eb8d?family=Acumin+Pro);
 
 .main-article {
-    background-image: url(../img/mountain.jpg);
+    background:
+                // top, transparent black, faked with gradient 
+                linear-gradient(
+                 rgba(0, 0, 0, 0.3), 
+                 rgba(0, 0, 0, 0.3)
+               ),
+               // instead of filter: brightness
+               url(../img/mountain.jpg);
+    background-position: center; // lovely fix
+               
     background-size: cover;
     color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 4rem 2rem;
 
-    img {
-        width: 100%;
-        
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 8rem;
     }
 
-    &__text {
-        text-align: left;
-        margin-bottom: .5rem;
+    @media only screen and (min-width: $bp-desktop) {
+        padding: 14rem;
+        flex-basis: 0;
+        flex-grow: 6;
+    }  
+    
+    @media only screen and (min-width: $bp-large-desktop) {
+        padding: 17rem 24rem 17rem 32rem;
+        flex-basis: 0;
+        flex-grow: 6;
+    }
+
+    &__category {
+        text-transform: uppercase;
+        font-weight: bold;
+        //font-size: 1.5rem; // 24px - 2.4rem, but in my case 24px = 1.5rem 
+        font-size: 2.4rem; // fixed now
+
+        &::after {
+            content: "";
+            height: 2px;
+            display: block;
+            background-color: #fff;
+            margin-top: 4rem;
+        }
     }
 
     &__title {
         font-size: 2.4rem;
+        font-weight: bold;
+        margin-bottom: 2rem;
+        margin-top: 3rem;
+    }
+
+    &__text {
+        font-size: 1.6rem;
+        text-align: left;
+        margin-bottom: 3rem;
+        font-weight: 400;
     }
 }
+
+.news {
+    background-color: $color-white;
+
+    &__content {
+        padding-bottom: 1rem;
+    }
+
+    padding: 0 2rem;
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 0 8rem;
+    }  
+    
+    @media only screen and (min-width: $bp-desktop) {
+        padding: 10rem 6rem 10rem 10rem;
+        flex-basis: 0;
+        flex-grow: 4;
+    }
+
+    @media only screen and (min-width: $bp-tablet) {
+        &__content{
+            display: flex;
+            flex-direction: row;
+        }
+
+        &__content > div { // to set equal width to both news-blocks  
+            flex-grow: 1;
+            flex-basis: 0;
+        }
+
+        &__content > div:not(:first-child){ 
+            margin-left: 4rem;
+        }
+    }
+}
+
+.main-article-and-news {
+    @media only screen and (min-width: $bp-desktop) {
+        display: flex; 
+    }
+}
+
+@mixin section-margin {
+    margin: 0 2rem;
+    @media only screen and (min-width: $bp-tablet) {
+        margin: 0 8rem;
+    }  
+    
+    @media only screen and (min-width: $bp-desktop) {
+        margin: 0 14rem;
+    }  
+    
+    @media only screen and (min-width: $bp-large-desktop) {
+        margin: 0 32rem;
+    } 
+}
+
+.trending {
+
+    @include section-margin;
+
+    @media only screen and (min-width: $bp-tablet) {
+        &__content > div:not(:first-child){ // nicuuu :P Первый раз осознанно применил, not
+            margin-left: 4rem;
+        }
+
+        &__content{
+            display: flex;
+            flex-direction: row;
+            //flex: wrap;
+            align-items: flex-start; // just for test flex param. 
+        }
+    }
+}
+
+.happening-now {
+    @include section-margin;
+
+    @media only screen and (min-width: $bp-desktop) {
+        flex-direction: column;
+    }
+
+    &__content-wrapper {
+        display: flex;
+        flex-direction: column;
+        
+        @media only screen and (min-width: $bp-desktop) {
+            flex-direction: row;
+        } 
+    }
+    
+    &__column-2{
+        display: flex;
+        flex-direction: column;
+
+        @media only screen and (min-width: $bp-tablet) {
+            flex-direction: row;
+
+            & > div:not(:first-child){ // nicuuu :P Первый раз осознанно применил, not
+                margin-left: 4rem;
+            }
+        }
+
+        @media only screen and (min-width: $bp-desktop) {
+            flex-direction: column;
+            flex-basis: 0;
+            flex-grow: 1;
+
+
+            & > div{ 
+                margin-left: 4rem;
+            }
+        }
+    }
+
+    &__column-1{
+        @media only screen and (min-width: $bp-desktop) {
+            flex-basis: 0;
+            flex-grow: 2;
+        }
+    }
+}
+
+.block-head {
+    display: flex;
+    justify-content: space-between;
+    //border: 1px solid red;
+
+    padding: 4rem 0;
+
+    &__title {
+        //font: Bold 2.4rem/2rem Helvetica;
+        font-size: 2.4rem;
+        font-weight: bold;
+        line-height: 2rem;
+        
+        text-transform: uppercase;
+        color: $color-black;
+    }
+}
+
+.article {
+    color: $color-grey-dark-2;
+    position: relative;
+    margin-bottom: 4rem;
+    font-family: "Acumin Pro"; 
+
+    &--trending {
+        background-color: $color-white;
+        border-radius: $border-radius;
+        overflow: hidden; 
+    }
+
+    &__category {
+        color: $color-primary;
+        text-transform: uppercase;
+        //font: Bold 1.6rem/2rem Helvetica;
+        font-size: 1.6rem;
+        font-weight: bold;
+        line-height: 2rem;
+
+        padding-top: 4rem;
+
+        &--trending{
+            padding-top: 0px;
+            display: none;
+        }
+
+        &--happening-now  {
+            padding-top: 0px; // Don't need this. Because of absolute position
+            color: $color-white;
+     
+            @media only screen and (min-width: $bp-tablet) {
+                top: 4rem; 
+                left: 4rem;
+            }
+        }
+    }
+
+    &__title {
+        padding-top: 2rem;
+        color: $color-black;
+       // font: Bold 2.4rem/3.4rem Helvetica;
+        font-size: 2.4rem;
+        font-weight: bold;
+        line-height: 3.4rem;
+
+        z-index: 1;
+
+        &--happening-now  {
+            color: $color-white;
+        }
+
+        @media only screen and (min-width: $bp-tablet) {
+            //font-size: 24px;
+        }
+    }
+
+    &__text {
+        padding-top: 1rem;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        z-index: 1;
+
+        @media only screen and (min-width: $bp-tablet) {
+           //width: 90%; // to have some space between two articles text
+        }
+
+        &--happening-now  {
+            color: $color-white;
+            display: none; // we don't need text of article in "Happening section " section
+        }
+    }
+
+    &__image {
+        width: 100%;
+    
+        &--happening-now {
+            min-height: 300px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-size: 50% 50%;
+            border-radius: $border-radius;
+        }
+    }
+
+    &__author {
+        text-decoration: underline;
+    }
+
+    &__wrap {
+
+        &--trending {
+            padding: 0 2.4rem 0.4rem 2.4rem;
+        }
+
+        &--happening-now {
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            //border: 5px solid red;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 2.4rem;
+            //padding-right: 40px; // to compensate "left 40px"
+            text-align: left;
+
+            @media only screen and (min-width: $bp-tablet) {
+                padding: 4rem;
+            }
+        }
+    }
+}
+
+.divide-line {
+    height: 2px;
+    background-color: $color-grey-light-1;
+    width: 100%;
+}
+
+.date-time {
+    color: $color-grey-dark-2; 
+    display: flex;
+    align-items: center;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 1.3rem;
+    line-height: 2.6rem;
+    font-style: italic;
+
+    padding-top: 4px;
+
+    &__icon {
+        height: 1rem;
+        width: 1rem;
+        background-size: cover;
+        margin-right: .5rem;
+
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/clock.svg');
+
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-grey-dark-1; 
+            -webkit-mask-image: url('../img/clock.svg'); 
+            mask-image: url('../img/clock.svg'); 
+            -webkit-mask-size: cover; 
+            mask-size: cover; 
+            background-image: none;
+        }
+    }
+}
+

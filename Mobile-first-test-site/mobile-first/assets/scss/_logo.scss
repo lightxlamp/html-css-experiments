@@ -1,0 +1,24 @@
+.logo {
+    text-transform: uppercase;
+    
+    font-size: 1.3rem; 
+    line-height: 2.0rem;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+
+    &--header {
+        color: $color-grey-dark-2;
+
+        @media only screen and (min-width: $bp-tablet) {
+            color: $color-primary;
+        }
+    }
+
+    &--white {
+        color: $color-white;
+    }
+
+    &--red {
+        color: $color-primary;
+    }
+}

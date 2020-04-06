@@ -1,0 +1,47 @@
+@mixin icon-box-settings {
+    height: 1.5rem;
+    width: 1.5rem;
+    background-size: cover;
+}
+
+@mixin support-settings {
+    -webkit-mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
+    mask-size: cover; // mask allow us to see background. (throught specified shape (mask-image))
+    background-image: none;
+}
+
+.items-navigation {
+
+    display: flex;
+
+    &__left-arrow
+    {
+        margin-right: .5rem;
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/navigate_before.svg');
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-black; 
+            -webkit-mask-image: url('../img/navigate_before.svg'); 
+            mask-image: url('../img/navigate_before.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }
+    } 
+    
+    &__right-arrow
+    {
+        @include icon-box-settings;
+        background-image: url('../img/navigate_next.svg');
+
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-black; 
+            -webkit-mask-image: url('../img/navigate_next.svg'); 
+            mask-image: url('../img/navigate_next.svg'); 
+            @include support-settings;
+        }
+    }
+}

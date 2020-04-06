@@ -1,0 +1,224 @@
+@mixin icon-box-settings {
+    height: 1.6rem;
+    width: 1.6rem;
+    background-size: cover;
+}
+
+@mixin support-settings {
+    -webkit-mask-size: cover; 
+    mask-size: cover; // mask allow us to see background. (throught specified shape (mask-image))
+    background-image: none;
+}
+
+.side-bar {
+    position: fixed;
+    z-index: 10;
+    top: 0; 
+    left: 0;
+    width: 29rem;
+    background-color: #F6F8F9;
+    box-shadow: 0px 0px 60px #00000099;
+    
+    @media only screen and (min-width: $bp-tablet) {
+        display: none; // hides automatically at higher resolutions. 1 query is enough
+    }
+
+    &__body {
+        padding: 4rem;
+        margin-bottom: 10rem;
+    }
+
+    &__footer {
+        background-color: $color-black;
+        opacity: 0.23;
+        padding: 4rem 0rem 4rem 4rem;
+        display: flex;   
+        flex-direction: column;
+    }
+
+    &__footer-links {
+        display: flex;   
+    }
+
+    &__footer-social {
+        margin-top: 6rem;
+        padding-right: 8rem; // У компонента social justify-content стоит flex-end. И я не могу flex-start поставить
+        // и так решил
+        // Bad way. Ask about this. TODO
+    }
+}
+
+.side-nav {
+
+    margin-top: 8rem;
+
+    &__item {
+        display: flex;
+        margin-top: 4rem;
+    }
+
+    &__link:link,
+    &__link:visited {
+        padding: 0 0 0 3rem !important;
+    }   
+
+    &__home
+    {   
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/svg/home.svg');
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-menu-links; 
+            -webkit-mask-image: url('../img/svg/home.svg'); 
+            mask-image: url('../img/svg/home.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }
+    }     
+    
+    &__discovery
+    {   
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/svg/compass2.svg');
+        opacity: 50%;
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-menu-links; 
+            -webkit-mask-image: url('../img/svg/compass2.svg'); 
+            mask-image: url('../img/svg/compass2.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }
+    }    
+    
+    &__photos
+    {   
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/svg/image.svg');
+        opacity: 50%;
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-menu-links; 
+            -webkit-mask-image: url('../img/svg/image.svg'); 
+            mask-image: url('../img/svg/image.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }
+    }     
+    
+    &__contact
+    {   
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/svg/envelop.svg');
+        opacity: 50%;
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-menu-links;  
+            -webkit-mask-image: url('../img/svg/envelop.svg'); 
+            mask-image: url('../img/svg/envelop.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }
+    } 
+}
+
+.nav {
+    list-style: none;
+    display: none; // mobile first 
+    flex-wrap: wrap;
+
+    &__side-bar {
+        display: flex;
+    }
+
+    &--side-bar {
+        display: flex !important;
+    }
+
+    @media only screen and (min-width: $bp-tablet) {
+        & {
+            display: flex;
+        }
+
+        &--footer {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    align-items: center;
+
+    &__link:link,
+    &__link:visited {
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 2rem;
+        color: $color-menu-links;
+
+        text-transform: uppercase;
+        text-align: center;
+        padding: 11px;
+        display: block;
+        transition: all .2s;
+        opacity: 50%;
+    }
+
+    @mixin common-link-settings-1 {
+        color: $color-grey-dark-1;
+        opacity: 100%;
+        text-transform: none;
+    }  
+    
+    @mixin common-link-settings-2 {
+        background-color: rgba(#fff, .05);
+        transform: translateY(-3px);
+        opacity: 100%;
+    }
+
+    &__link--footer:link,
+    &__link--footer:visited {
+        @include common-link-settings-1;
+        padding: .2rem 1rem;
+        font-size: 1.3rem;
+    }
+
+    &__link--side-bar:link,
+    &__link--side-bar:visited {
+        @include common-link-settings-1;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+    }
+
+    &__link:hover,
+    &__link:active {
+        @include common-link-settings-2;
+    }
+
+    &__link {
+        &--active{
+            opacity: 100% !important;
+        }
+    }
+}
+
+
+.nav__item--active {
+    opacity: 100%;
+    
+}
+
+.nav__item--active::before {
+    transform: scaleY(1);
+    width: 100%;
+}

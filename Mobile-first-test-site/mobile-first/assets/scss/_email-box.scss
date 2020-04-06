@@ -1,0 +1,129 @@
+.email-box {
+    @mixin icon-box-settings {
+        height: 1.6rem;
+        width: 1.6rem;
+        background-size: cover;
+    }
+
+    @mixin support-settings {
+        -webkit-mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
+        mask-size: cover; // mask allow us to see background. (throught specified shape (mask-image))
+        background-image: none;
+    }
+    
+    &__text {
+        color: $color-grey-dark-1;
+    }
+
+    &__icon {
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/location-arrow.svg');
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-white; 
+            -webkit-mask-image: url('../img/location-arrow.svg'); 
+            mask-image: url('../img/location-arrow.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }
+    }
+}
+
+:root {
+    --input-border: rgba(255, 255, 255, .1);
+    --input-background: transparent;
+    --input-placeholder: #CBD1DC;
+
+    --input-border-focus: #275EFE;
+
+    --group-color: var(--input-color);
+    --group-border: var(--input-border);
+    //--group-background: #EEF4FF;
+    --group-background: yellow;
+
+    --group-color-focus: #fff;
+    --group-border-focus: var(--input-border-focus);
+    --group-background-focus: #678EFE;
+}
+
+.form-field {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    line-height: 25px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    border-radius: 6px;
+    -webkit-appearance: none;
+    color: $color-grey-dark-1;
+    border: 1px solid var(--input-border);
+    background: var(--input-background);
+    transition: border .3s ease;
+    &::placeholder {
+        color: var(--input-placeholder);
+    }
+    &:focus {
+        outline: none;
+        border-color: var(--input-border-focus);
+    }
+}
+
+.form-group {
+    position: relative;
+    display: flex;
+    width: 100%;
+    & > span,
+    .form-field {
+        white-space: nowrap;
+        display: block;
+        &:not(:first-child):not(:last-child) {
+            border-radius: 0;
+        }
+        &:first-child {
+            border-radius: 6px 0 0 6px;
+        }
+        &:last-child {
+            border-radius: 0 6px 6px 0;
+        }
+        &:not(:first-child) {
+            margin-left: -1px;
+        }
+    }
+    .form-field {
+        position: relative;
+        z-index: 1;
+        flex: 1 1 auto;
+        width: 1%;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    & > span {
+        text-align: center;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 25px;
+        color: var(--group-color);
+        background: transparent;
+        border: 1px solid var(--group-border);
+        transition: background .3s ease, border .3s ease, color .3s ease;
+    }
+    &:focus-within {
+        & > span {
+            color: var(--group-color-focus);
+            background: var(--group-background-focus);
+            border-color: var(--group-border-focus);
+        }
+    }
+}
+
+body {
+    .form-group {
+        max-width: 360px;
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    }
+}
