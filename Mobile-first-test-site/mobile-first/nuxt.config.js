@@ -13,7 +13,8 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }, 
-      { rel: 'stylesheet', href: '//db.onlinewebfonts.com/c/4eea0b56eeb6549def65619b1957eb8d?family=Acumin+Pro" rel="stylesheet" type="text/css' }
+      { rel: 'stylesheet', href: '//db.onlinewebfonts.com/c/4eea0b56eeb6549def65619b1957eb8d?family=Acumin+Pro' }
+      // { rel: 'stylesheet', href: '//db.onlinewebfonts.com/c/4eea0b56eeb6549def65619b1957eb8d?family=Acumin+Pro" rel="stylesheet" type="text/css' }
     ]
   },
   /*

@@ -4,8 +4,8 @@
     background:
                 // top, transparent black, faked with gradient 
                 linear-gradient(
-                 rgba(0, 0, 0, 0.3), 
-                 rgba(0, 0, 0, 0.3)
+                 rgba(0, 0, 0, 0.2), 
+                 rgba(0, 0, 0, 0.2)
                ),
                // instead of filter: brightness
                url(../img/mountain.jpg);
@@ -123,16 +123,29 @@
 
     @include section-margin;
 
-    @media only screen and (min-width: $bp-tablet) {
+    @media only screen and (min-width: $bp-tablet) 
+    {
         &__content > div:not(:first-child){ // nicuuu :P Первый раз осознанно применил, not
             margin-left: 4rem;
         }
+    }
 
-        &__content{
+    &__content {
+        @media only screen and (min-width: $bp-tablet) 
+        {
             display: flex;
             flex-direction: row;
             //flex: wrap;
             align-items: flex-start; // just for test flex param. 
+        }
+
+        & > div:last-child
+        {
+            display: none; // To hide a third card on a lower resolutions
+
+            @media only screen and (min-width: $bp-desktop) {
+                display: block;
+            } 
         }
     }
 }
@@ -156,6 +169,15 @@
     &__column-2{
         display: flex;
         flex-direction: column;
+
+        & > div:last-child
+        {
+            display: none; // To hide a third card on a lower resolutions
+
+            @media only screen and (min-width: $bp-desktop) {
+                display: block;
+            } 
+        }
 
         @media only screen and (min-width: $bp-tablet) {
             flex-direction: row;
@@ -215,6 +237,10 @@
         overflow: hidden; 
     }
 
+    &--happening-now-2 {
+        background-color: transparent; // #F6F8F9
+    }
+
     &__category {
         color: $color-primary;
         text-transform: uppercase;
@@ -226,7 +252,10 @@
         padding-top: 4rem;
 
         &--trending{
-            padding-top: 0px;
+            display: none;
+        }
+
+        &--happening-now-2 {
             display: none;
         }
 
@@ -255,6 +284,11 @@
             color: $color-white;
         }
 
+        &--story {
+            font-size: 1.6rem;
+            font-family: "Acumin Pro"; 
+        }
+
         @media only screen and (min-width: $bp-tablet) {
             //font-size: 24px;
         }
@@ -271,8 +305,11 @@
         }
 
         &--happening-now  {
-            color: $color-white;
-            display: none; // we don't need text of article in "Happening section " section
+            display: none; // we don't need text of an article in "Happening-now" section
+        }
+
+        &--happening-now-2 {
+            display: none;
         }
     }
 
@@ -287,6 +324,10 @@
             background-size: 50% 50%;
             border-radius: $border-radius;
         }
+
+        &--happening-now-2 {
+            border-radius: $border-radius;
+        }
     }
 
     &__author {
@@ -299,12 +340,14 @@
             padding: 0 2.4rem 0.4rem 2.4rem;
         }
 
-        &--happening-now {
+        &--happening-now-2 {
+            padding: 0;
+        }
 
+        &--happening-now {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            //border: 5px solid red;
             height: 100%;
             position: absolute;
             top: 0;
@@ -326,20 +369,32 @@
     width: 100%;
 }
 
-.date-time {
+.date-time-author {
     color: $color-grey-dark-2; 
     display: flex;
     align-items: center;
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 1.3rem;
     line-height: 2.6rem;
-    font-style: italic;
-
+    font-style: oblique;
     padding-top: 4px;
 
+    &--happening-now {
+        color: $color-grey-dark-1; 
+    }
+
+    &--story {
+        display: none;
+
+        @media only screen and (min-width: $bp-tablet) {
+            display: block;
+            padding-top: 3rem;
+        }
+    }
+
     &__icon {
-        height: 1rem;
-        width: 1rem;
+        height: 1.6rem;
+        width: 1.6rem;
         background-size: cover;
         margin-right: .5rem;
 
@@ -356,5 +411,811 @@
             background-image: none;
         }
     }
+
+    &__author {
+        text-decoration: underline;
+    }
 }
 
+@mixin icon-box-settings {
+    height: 1.6rem;
+    width: 1.6rem;
+    background-size: cover;
+    margin-right: .5rem;
+}
+
+@mixin support-settings {
+    -webkit-mask-size: cover; // this allowed us to change height and width from 2 px to 1px and icon still visible
+    mask-size: cover; // mask allow us to see background. (throught specified shape (mask-image))
+    background-image: none;
+}
+
+.breadcrumbs {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem;
+
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 0;
+        margin-bottom: 2rem;
+    } 
+
+    @media only screen and (min-width: $bp-desktop) {
+        display: flex;
+        //margin: 18.5rem;
+        //margin-bottom: 4rem;
+    } 
+
+    font-size: 1.1rem;
+    line-height: 2rem;
+    color: $color-black;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    &__settings-icon-wrapper {
+        padding: 1rem;
+        border-radius: $border-radius;
+        border: 2px solid $color-grey-light-1;
+    }
+
+    &__settings-icon {
+        height: 1.6rem;
+        width: 1.6rem;
+        background-size: cover;
+
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/SVG/equalizer.svg');
+        background-position: center;
+
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: #575F66; 
+            -webkit-mask-image: url('../img/SVG/equalizer.svg'); 
+            mask-image: url('../img/SVG/equalizer.svg'); 
+            -webkit-mask-size: cover; 
+            mask-size: cover; 
+            background-image: none;
+        }
+    }
+}
+
+.back-btn {
+    @media only screen and (min-width: $bp-tablet) {
+        display: none;
+    }  
+
+    height: 2.6rem;
+    width: 2.6rem;
+    background-size: cover;
+    margin-right: 3rem;
+
+    // We can't change color of icon when we adding it this way. So just leave this for older browsers
+    background-image: url('../img/SVG/arrow-left.svg');
+
+    @supports(-webkit-mask-image: url()) or (mask-image: url())
+    {
+        background-color: $color-black; 
+        -webkit-mask-image: url('../img/SVG/arrow-left.svg'); 
+        mask-image: url('../img/SVG/arrow-left.svg'); 
+        -webkit-mask-size: cover; 
+        mask-size: cover; 
+        background-image: none;
+    }
+}
+
+.path-and-settings {
+
+    display: none;
+
+    @media only screen and (min-width: $bp-tablet) {
+        display: flex;
+    }  
+
+    &__path--page {
+        color: $color-grey-dark-2;
+    }
+
+    &__icon {
+        height: 1.6rem;
+        width: 1.6rem;
+        background-size: cover;
+        margin-right: 3rem;
+
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/SVG/home.svg');
+
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-black; 
+            -webkit-mask-image: url('../img/SVG/home.svg'); 
+            mask-image: url('../img/SVG/home.svg'); 
+            -webkit-mask-size: cover; 
+            mask-size: cover; 
+            background-image: none;
+        }
+    }
+}
+
+.search-news {
+    display: flex;
+    flex-direction: column;
+    
+    @media only screen and (min-width: $bp-tablet) {
+       border-radius: $border-radius;
+       overflow: hidden;
+    }  
+    @media only screen and (min-width: $bp-desktop) {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.search-news-main {
+    color: $color-white;
+    padding: 9rem 2.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media only screen and (min-width: $bp-desktop) {
+        flex-basis: 0;
+        flex-grow: 1;
+        padding: 15rem 11rem;
+    }
+
+    background-image: url('../img/yellow_mountain.jpg');
+    background-position: center;
+    background-size: cover;
+    &__title {
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    &__line {
+        margin-top: 3rem;
+        width: 4rem;
+        height: 0;
+        border: 2px solid $color-primary;
+    }
+
+    &__text {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+        font-size: 1.6rem;
+        line-height: 2.6rem;
+        font-weight: bold;
+        text-align: center;
+        word-break: break-all;
+        max-width: 44rem;
+    }
+
+    &__author {
+        margin-top: 3rem;
+    }
+}
+
+.container-world-news-page-top {
+    color: $color-grey-dark-2;
+    font-size: 1.4rem;
+    line-height: 2.6rem;
+    font-weight: 400;
+
+    @media only screen and (min-width: $bp-desktop) {
+        padding: 0 14rem 3rem 14rem;
+    }  
+
+    @media only screen and (min-width: $bp-large-desktop) {
+        padding: 0 32rem 4rem 32rem;
+    }
+}
+
+
+.three-columns-section {
+    border-top: 2px solid $color-grey-light-1;
+    padding-top: 3rem;
+    margin: 4rem 2.4rem;
+
+    @media only screen and (min-width: $bp-tablet) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 4rem 0rem;
+    }  
+
+ 
+    &__col-1 {
+        @media only screen and (min-width: $bp-tablet) {
+            width: 56%;
+        }
+
+        @media only screen and (min-width: $bp-desktop) {
+            width: 30%;
+        }
+    }
+
+    &__col-2 {
+        @media only screen and (min-width: $bp-tablet) {
+            width: 45%;
+        }
+        @media only screen and (min-width: $bp-desktop) {
+            width: 30%;
+        }
+    }
+
+    &__col-3 {
+        margin-top: 2rem;
+
+        @media only screen and (min-width: $bp-tablet) {
+            margin-top: 0;
+            width: 45%;
+        }
+        @media only screen and (min-width: $bp-desktop) {
+            width: 30%;
+        }
+    }
+
+    &__col-3 > div:first-child {
+        margin-top: 1rem;
+    }
+}
+
+.image-and-two-text-block-section {
+    border-top: 2px solid $color-grey-light-1;
+    padding-top: 3rem;
+    margin: 0rem 2.4rem 3rem;
+
+    @media only screen and (min-width: $bp-tablet) {
+        margin: 0rem 0rem 3rem;
+    }
+
+    @media only screen and (min-width: $bp-desktop) {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    &__col-1 {
+        background-image: url('../img/elephant.jpg');
+        background-position: center;
+        background-size: cover;
+        position: relative;
+        width: 100%;
+        min-height: 18rem;
+        padding-top: 55.04%; /* Aspect Ratio */
+
+        @media only screen and (min-width: $bp-tablet) {
+            min-height: 26rem;
+            padding-top: 42.76%; /* Aspect Ratio */
+        }
+
+        @media only screen and (min-width: $bp-desktop) {
+            width: 100%;
+        }
+
+        border-radius: $border-radius;
+        overflow: hidden;
+    }
+
+    &__col-2 {
+        margin: 2.4rem 0;
+        @media only screen and (min-width: $bp-desktop) {
+            width: 70%;
+            padding-right: 3rem;
+        }
+    }  
+    
+    &__col-3 {
+        color: $color-black;
+        font-size: 1.6rem;
+        line-height: 3rem;
+        font-weight: 400;
+        font-style: oblique;
+
+        @media only screen and (min-width: $bp-desktop) {
+            width: 30%;
+            margin: 2.4rem 0;
+        }
+    }
+}
+
+.pagination {
+    border-top: 2px solid $color-grey-light-1;
+    padding-top: 3rem;
+    margin: 0rem 2.4rem 3rem; /* top | horizontal | bottom */
+
+    @media only screen and (min-width: $bp-tablet) {
+        margin: 0rem 0rem 3rem;
+    }
+
+    color: $color-grey-dark-2;
+    font-size: 1.1rem;
+    line-height: 2rem;
+
+    &__ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+    }
+
+    &__ul > li:not(:first-child) {
+        margin-left: 1rem;
+    }
+
+    &__li {
+        padding-bottom: 1rem;
+
+        &--more {
+            @include icon-box-settings;
+            background-image: url('../img/SVG/dots-three-horizontal.svg');
+            margin-top: 2px;
+    
+            @supports(-webkit-mask-image: url()) or (mask-image: url())
+            {
+                background-color: $color-black;
+                -webkit-mask-image: url('../img/SVG/dots-three-horizontal.svg'); 
+                mask-image: url('../img/SVG/dots-three-horizontal.svg'); 
+                @include support-settings;
+            }
+        }
+    }
+
+    &__li--active {
+        color: $color-black;
+        font-weight: bold;
+        border-bottom: 2px solid $color-primary;
+    }
+}
+
+h2 {
+    font-size: 2.4rem;
+    line-height: 3.4rem;
+    color: $color-black;
+    font-family: "Acumin Pro"; 
+    font-weight: bold;
+    text-align: left;
+    padding: 1.4rem 0 4rem;
+}
+
+
+.input-box {
+    color: $color-black;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    font-family: "Acumin Pro"; 
+    font-weight: bold;
+    text-align: left;
+    position: relative;
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+    
+    &__field {
+        margin-bottom: 4rem;
+        border: 2px solid $color-grey-light-1;
+        border-radius: $border-radius;
+        width: 100%;
+        height: 4rem;
+        padding: 1.4rem;
+    }
+
+    &__icon {
+        height: 1.6rem;
+        width: 1.6rem;
+        border: 2px solid red;
+        background-size: cover;
+        margin-right: 3rem;
+        position: absolute;
+        z-index: 10;
+        right: -1rem;
+        top: 4rem;
+
+        &--down {
+            background-image: url('../img/SVG/chevron-thin-down.svg');
+
+            @supports(-webkit-mask-image: url()) or (mask-image: url())
+            {
+                background-color: $color-grey-dark-2; 
+                -webkit-mask-image: url('../img/SVG/chevron-thin-down.svg'); 
+                mask-image: url('../img/SVG/chevron-thin-down.svg'); 
+                -webkit-mask-size: cover; 
+                mask-size: cover; 
+                background-image: none;
+            }
+        }
+    }
+}
+
+.search-news-fields {
+    &__btn {
+        width: 15rem;
+        text-align: center;
+    }
+    background-color: $color-white;
+    padding: 4rem 2.4rem;
+
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 8rem; 
+    }  
+
+    @media only screen and (min-width: $bp-desktop) {
+        flex-basis: 0;
+        flex-grow: 1;
+        padding: 12rem 11rem 14rem;
+    }
+    
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+}
+
+.stories-block {
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 8rem;
+        padding-top: 6rem;
+    }  
+    @media only screen and (min-width: $bp-desktop) {
+        display: flex;
+        padding: 10rem 14rem;
+    }
+}
+
+.main-story {
+    // top, transparent black, faked with gradient - instead of filter: brightness
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(../img/parrot.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 14rem 2.4rem 4rem 2.4rem;
+
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 11rem 4rem 4rem 4rem;
+    }
+    
+    @media only screen and (min-width: $bp-desktop) {
+        padding: 22.4rem 5rem 5rem 5rem;
+    }
+
+    &__title {
+        color: $color-white;
+        font-size: 5rem; // for desktop
+        line-height: 6rem;  // for desktop
+
+        font-size: 3rem;
+        line-height: 4rem;
+        text-align: center; 
+        text-transform: uppercase;
+        font-weight: bold;
+    } 
+    
+    &__links {
+        margin-top: 2rem;
+        color: $color-white;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+
+        & > :first-child {
+            margin-right: 4rem;
+        }
+    } 
+    
+    &__bottom-section {
+        margin-top: 6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        @media only screen and (min-width: $bp-tablet) {
+            margin-top: 11rem;
+        } 
+    } 
+}
+
+.next-story {
+    display: flex;
+    justify-content: space-between;
+
+    @media only screen and (min-width: $bp-tablet) {
+        border: 2px dashed rgba($color-white, .5);
+        border-radius: $border-radius;
+        padding: 2rem;
+        width: 28.4rem;
+    }
+
+    @media only screen and (min-width: $bp-desktop) {
+        padding: 3rem;
+        width: 36rem;
+    }    
+    
+    @media only screen and (min-width: $bp-large-desktop) {
+        width: 44rem;
+    }
+
+    &__left {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__right {
+        display: flex;
+        align-items: center;
+
+        @media only screen and (min-width: $bp-desktop) {
+            align-items: flex-start;
+        } 
+    }
+
+    &__next {
+        color: $color-primary;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        margin-right: 1rem;
+    }
+
+    &__icon {
+        @include icon-box-settings;
+        background-image: url('../img/navigate_next.svg');
+        margin-top: 2px;
+
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-white; 
+            -webkit-mask-image: url('../img/navigate_next.svg'); 
+            mask-image: url('../img/navigate_next.svg'); 
+            @include support-settings;
+        }
+    }
+
+    &__title {
+        display: none;
+        
+        @media only screen and (min-width: $bp-tablet) {
+            display: inline-block;
+            color: $color-white;
+            font-size: 1.6rem;
+            line-height: 2rem;
+            font-weight: bold;
+            padding-top: .5rem;
+        }
+    }
+
+    &__text {
+        display: none;
+
+        @media only screen and (min-width: $bp-desktop) {
+            display: inline-block;
+            color: $color-white;
+            font-size: 1.6rem;
+            line-height: 2.6rem;
+        }
+    }
+}
+
+.author {
+    display: flex;
+    align-items: center;
+
+    &__photo {
+        border-radius: 50%;
+        width: 2.8rem;
+        height: 2.8rem;
+        object-fit: cover;
+        object-position: 50% 50%;
+        border: 2px solid $color-white;
+
+        @media only screen and (min-width: $bp-tablet) {
+            width: 4rem;
+            height: 4rem;
+        }
+
+        &--story {
+            width: 4rem;
+            height: 4rem;
+            border: none;
+        }
+    }
+
+    &__name {
+        display: none;
+        color: $color-white;
+        font-size: 1.6rem;
+        line-height: 2rem;
+        font-weight: bold;
+        margin-left: 2rem;
+
+        @media only screen and (min-width: $bp-tablet) {
+          display: inline-block;
+        }
+
+        &--story {
+            display: inline-block;
+            color: $color-black;
+            font-size: 2.4rem;
+            line-height: 4.2rem;
+            font-weight: bold;
+            text-align: left;
+           
+        }
+    }
+}
+
+.main-story-link-1 {
+    //margin-right: 2rem;
+    display: flex;
+    &__icon {
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/earth.svg');
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-white; 
+            -webkit-mask-image: url('../img/earth.svg'); 
+            mask-image: url('../img/earth.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }  
+    }
+
+    &__text {
+        margin-top: -2px;
+    }
+}
+
+.main-story-link-2 {
+    display: flex;
+    &__icon {
+        @include icon-box-settings;
+        // We can't change color of icon when we adding it this way. So just leave this for older browsers
+        background-image: url('../img/SVG/file-text2.svg');
+
+        // for newer browsers 
+        @supports(-webkit-mask-image: url()) or (mask-image: url())
+        {
+            background-color: $color-white; 
+            -webkit-mask-image: url('../img/SVG/file-text2.svg'); 
+            mask-image: url('../img/SVG/file-text2.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            @include support-settings;
+        }  
+    }
+
+    &__text {
+        margin-top: -2px;
+    }
+}
+
+.text-only-stories {
+    padding: 2.4rem;
+    padding-top: 4rem;
+
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 0;
+        padding-bottom: 2.4rem;
+        border-bottom: 2px solid $color-grey-light-1;
+
+        @media only screen and (min-width: $bp-desktop) {
+           border: none;
+        }  
+    }
+
+    @media only screen and (min-width: $bp-desktop) {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 0;
+        flex-grow: 1;
+        border-right: 2px solid $color-grey-light-1;
+        padding-right: 3rem;
+    }
+} 
+
+.text-only-story {
+
+    @media only screen and (min-width: $bp-tablet) {
+        display: flex;
+        align-items: flex-start;
+    }  
+    
+    @media only screen and (min-width: $bp-desktop) {
+        flex-direction: column;
+    }
+
+    &__title {
+        color: $color-black;
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+        font-family: "Acumin Pro"; 
+        text-align: left;
+        font-weight: bold;
+    }
+
+    &__text {
+        padding: 2.4rem 0;
+        color: $color-grey-dark-2;
+        font-size: 1.4rem;
+        line-height: 2.6rem;
+        text-align: left;
+        font-weight: 400;
+
+        @media only screen and (min-width: $bp-desktop) {
+            padding-bottom: 0;
+        }
+    }
+
+    &__col-1-of-2 {
+        @media only screen and (min-width: $bp-tablet) {
+            margin-right: 4rem;
+            flex-basis: 0;
+            flex-grow: 1;
+        }     
+        @media only screen and (min-width: $bp-desktop) {
+            margin-right: 0;
+        }
+    }
+
+    &__col-2-of-2 {
+        flex-basis: 0;
+        flex-grow: 1;
+
+        & {
+            @media only screen and (min-width: $bp-desktop) {
+                padding-bottom: 2.4rem;
+            }
+        }
+
+        & > :first-child {
+            border-bottom: 2px dashed $color-grey-light-1;
+        }
+    }
+}
+
+.video-story {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9, for an aspect ratio of 1:1 change to this value to 100% */ 
+}
+
+iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stories {
+    padding: 2.4rem;
+    padding-top: 1rem;
+    background-color: #F6F8F9;
+    flex-basis: 0;
+    flex-grow: 2;
+
+    @media only screen and (min-width: $bp-tablet) {
+        padding: 0;
+        padding-top: 2.4rem;
+    }    
+
+    @media only screen and (min-width: $bp-desktop) {
+        padding: 0;
+        padding-left: 4rem;
+    }  
+} 
+
+.story {
+    margin-bottom: 3.4rem;
+
+    &__text {
+        font-size: 1.6rem;
+        line-height: 3rem;
+        text-align: left;
+        color: $color-black;
+        font-style: oblique;
+        font-weight: 400;
+        margin-top: 1rem;
+    }
+}

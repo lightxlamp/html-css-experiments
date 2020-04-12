@@ -61,7 +61,7 @@
     }
     
     &__checkbox:checked ~ &__nav {
-        opacity: 100; // I've made mistake. But it still works.. 100 instead of 1
+        opacity: 1;
         width: 100%;
     }
 

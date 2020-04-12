@@ -23,17 +23,17 @@
     }
 
     @media only screen and (min-width: $bp-tablet) {
-        & :nth-child(1) {
+        & > :nth-child(1) { // tricky error "&:nth-child(1)" without >. Broke order of my navigation
             order: 2;
         } 
         
-        & :nth-child(3) {
+        & > :nth-child(3) {
             order: 2;
         }
     }
 
-    @media only screen and (min-width: $bp-desktop) {
-        & :nth-child(1) {
+    @media only screen and (min-width: $bp-tablet) {
+        & > :nth-child(1) {
             margin-left: auto; // to move footer-navigation to right side. To user avatar
         } 
     }

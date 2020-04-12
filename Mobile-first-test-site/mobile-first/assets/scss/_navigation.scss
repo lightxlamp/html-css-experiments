@@ -66,14 +66,14 @@
     {   
         @include icon-box-settings;
         // We can't change color of icon when we adding it this way. So just leave this for older browsers
-        background-image: url('../img/svg/home.svg');
+        background-image: url('../img/SVG/home.svg');
 
         // for newer browsers 
         @supports(-webkit-mask-image: url()) or (mask-image: url())
         {
             background-color: $color-menu-links; 
-            -webkit-mask-image: url('../img/svg/home.svg'); 
-            mask-image: url('../img/svg/home.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            -webkit-mask-image: url('../img/SVG/home.svg'); 
+            mask-image: url('../img/SVG/home.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
             @include support-settings;
         }
     }     
@@ -82,15 +82,15 @@
     {   
         @include icon-box-settings;
         // We can't change color of icon when we adding it this way. So just leave this for older browsers
-        background-image: url('../img/svg/compass2.svg');
-        opacity: 50%;
+        background-image: url('../img/SVG/compass2.svg');
+        opacity: 0.5;
 
         // for newer browsers 
         @supports(-webkit-mask-image: url()) or (mask-image: url())
         {
             background-color: $color-menu-links; 
-            -webkit-mask-image: url('../img/svg/compass2.svg'); 
-            mask-image: url('../img/svg/compass2.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            -webkit-mask-image: url('../img/SVG/compass2.svg'); 
+            mask-image: url('../img/SVG/compass2.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
             @include support-settings;
         }
     }    
@@ -99,15 +99,15 @@
     {   
         @include icon-box-settings;
         // We can't change color of icon when we adding it this way. So just leave this for older browsers
-        background-image: url('../img/svg/image.svg');
-        opacity: 50%;
+        background-image: url('../img/SVG/image.svg');
+        opacity: 0.5;
 
         // for newer browsers 
         @supports(-webkit-mask-image: url()) or (mask-image: url())
         {
             background-color: $color-menu-links; 
-            -webkit-mask-image: url('../img/svg/image.svg'); 
-            mask-image: url('../img/svg/image.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            -webkit-mask-image: url('../img/SVG/image.svg'); 
+            mask-image: url('../img/SVG/image.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
             @include support-settings;
         }
     }     
@@ -116,15 +116,15 @@
     {   
         @include icon-box-settings;
         // We can't change color of icon when we adding it this way. So just leave this for older browsers
-        background-image: url('../img/svg/envelop.svg');
-        opacity: 50%;
+        background-image: url('../img/SVG/envelop.svg');
+        opacity: 0.5;
 
         // for newer browsers 
         @supports(-webkit-mask-image: url()) or (mask-image: url())
         {
             background-color: $color-menu-links;  
-            -webkit-mask-image: url('../img/svg/envelop.svg'); 
-            mask-image: url('../img/svg/envelop.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
+            -webkit-mask-image: url('../img/SVG/envelop.svg'); 
+            mask-image: url('../img/SVG/envelop.svg'); // after 3 years mask-image, without prefix, still does not work in chrome
             @include support-settings;
         }
     } 
@@ -146,6 +146,7 @@
     @media only screen and (min-width: $bp-tablet) {
         & {
             display: flex;
+            padding-right: 2rem;
         }
 
         &--footer {
@@ -170,19 +171,19 @@
         padding: 11px;
         display: block;
         transition: all .2s;
-        opacity: 50%;
+        opacity: 0.5;
     }
 
     @mixin common-link-settings-1 {
         color: $color-grey-dark-1;
-        opacity: 100%;
+        opacity: 1.0;
         text-transform: none;
     }  
     
     @mixin common-link-settings-2 {
         background-color: rgba(#fff, .05);
         transform: translateY(-3px);
-        opacity: 100%;
+        opacity: 1.0;
     }
 
     &__link--footer:link,
@@ -207,14 +208,14 @@
 
     &__link {
         &--active{
-            opacity: 100% !important;
+            opacity: 1.0;
         }
     }
 }
 
 
 .nav__item--active {
-    opacity: 100%;
+    opacity: 0.5;
     
 }
 
