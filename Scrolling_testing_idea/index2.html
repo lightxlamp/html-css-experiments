@@ -8,6 +8,7 @@
 <body>
     <div class="container">
         <div class="info"></div>
+        <div class="scrollBar"></div>
     </div>
 </body>
 </html>
@@ -24,12 +25,19 @@
         border: 2px solid blue;
         background-color: burlywood;
         overflow-y: hidden;
-        margin-bottom: 30px;
+        display: flex;
+        flex-direction: column;
     }
 
     .info {
         margin-top: 40%;
         background-color: red;
         height: 100%;
+        flex: 1;
+    }
+
+    .scrollBar {
+        flex-basis: 30px;
+        background-color: cadetblue;
     }
 </style>
