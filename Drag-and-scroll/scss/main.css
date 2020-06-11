@@ -1,13 +1,14 @@
 .items {
-  position: relative;
+  border: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  -webkit-transform: scale(0.98);
-          transform: scale(0.98);
   will-change: transform;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -17,25 +18,16 @@
 }
 
 .items.active {
-  background: rgba(255, 255, 255, 0.3);
   cursor: grabbing;
   cursor: -webkit-grabbing;
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
 }
 
 .item {
-  display: inline-block;
   background: skyblue;
   min-height: 250px;
   min-width: 400px;
-  margin: 2em 1em;
-}
-
-@media screen and (max-width: 500px) {
-  .item {
-    min-height: 200px;
-    min-width: 200px;
-  }
+  margin: 1em 1em;
 }
 /*# sourceMappingURL=main.css.map */

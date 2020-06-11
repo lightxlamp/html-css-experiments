@@ -1,31 +1,25 @@
 .items {
-  position: relative;
+  border: 1px solid black;
+  display: flex;
   width: 100%;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   transition: all 0.2s;
-  transform: scale(0.98);
   will-change: transform;
   user-select: none;
   cursor: pointer;
-}
 
-.items.active {
-  background: rgba(255,255,255,0.3);
-  cursor: grabbing;
-  cursor: -webkit-grabbing;
-  transform: scale(1);
+  &.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+    transform: scale(1.02);
+  }
 }
 
 .item {
-  display: inline-block;
   background: skyblue;
   min-height: 250px;
   min-width: 400px;
-  margin: 2em 1em;
-  @media screen and (max-width: 500px) {
-    min-height: 200px;
-    min-width: 200px;
-  }
+  margin: 1em 1em;
 }
