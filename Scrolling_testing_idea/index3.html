@@ -8,7 +8,7 @@
         html, body
         {
             height: 100%;
-            width: 100%;
+            /* width: 100%; */
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -35,9 +35,8 @@
         }
         
         .mainPart {
+            flex: 1;
             display: flex;
-            flex-direction: row;
-            height: 100%;
         }
 
         .navigationBar {
@@ -47,26 +46,28 @@
         .pageContent {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            /* height: 100%; */
         }
 
         .theHeader {
-            height: 300px;
+            flex: 0 0 50px;
             border: 1px solid red;
         }
 
         .container-wrapper {
-            height: 100%;
+            flex: 1;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            background-color: purple;
+            align-items: flex-start;
         }
 
         .container {
-            border: 5px solid black;
+            flex: 1;
             display: flex;
             overflow-x: scroll;
             padding: 10px 0 10px 10px;
-            height: 100%;
+            border: 5px solid black;
         }
 
         .box {
@@ -84,7 +85,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="logoBar">Logo</div>
+        <div class="logoBar">Logo</div> 
 
         <div class="mainPart">
             <div class="navigationBar">
@@ -99,7 +100,7 @@
             <div class="pageContent">
                 <div class="theHeader">
                     Reservations Upcoming / All
-                </div>
+                </div> 
                 <div class="container-wrapper">
                     <div class="container">
                         <div class="box">
@@ -219,7 +220,7 @@
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, sunt? Deserunt et sed officiis odio unde totam necessitatibus esse consequatur provident, nemo numquam voluptatibus vitae? Explicabo fugit aut dolores pariatur!
                             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consectetur, sunt? Deserunt et sed officiis odio unde totam necessitatibus esse consequatur provident, nemo numquam voluptatibus vitae? Explicabo fugit aut dolores pariatur!
                         </div>        
-                    </div>
+                    </div>  
                 </div>
             </div>
         </div>
