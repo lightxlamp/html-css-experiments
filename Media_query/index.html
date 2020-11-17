@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media query test</title>
+    <style>
+        .content p {
+            color: red;
+        }
+        @media (orientation: landscape) {
+            .content p {
+                color: orange;
+                font-size: 36px;
+            }
+        }    
+        @media (orientation: portrait) {
+            .content p {
+                color: grey;
+                font-size: 76px;
+                text-shadow: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <p>Hello</p>
+    </div>
+</body>
+</html>
