@@ -15,7 +15,7 @@
 
         #board {
             width: 100%;
-            height: 100%;
+            height: calc(100% - 350px);
             position: relative;
             overflow: hidden;
             background-color: rgb(245, 247, 250);
@@ -23,7 +23,7 @@
 
         .card {
             width: 720px;
-            height: 720px;
+            height: 920px;
             position: absolute;
             top: 50%;
             left: 50%;
@@ -32,11 +32,40 @@
             background-color: white;
             transform: translateX(-50%) translateY(-50%) scale(0.95);
         }
+        .buttons {
+            display: flex;
+            margin: 0 auto;
+            width: fit-content;
+            padding: 10px;
+        }
+        .like {
+            background-color: green;
+        }
+        .skip {
+            background-color: hotpink;
+        }
+        .btn {
+            width: 150px;
+            height: 150px;
+            line-height: 150px;
+            border-radius: 50%;
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            margin-right: 20px;
+        }
     </style>
 </head>
 
 <body>
-    <div id="board"></div>
+    <div id="board">
+    </div>
+    <div class="buttons">
+        <div class="like btn">✓</div>
+        <div class="skip btn">✖</div>
+    </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
     <script>
         /* LikeCarousel (c) 2019 Simone P.M. github.com/simonepm - Licensed MIT */
@@ -239,7 +268,7 @@
                 card.classList.add('card')
 
                 card.style.backgroundImage =
-                    "url('https://picsum.photos/720/720/?random=" + Math.round(Math.random() * 1000000) + "')"
+                    "url('https://picsum.photos/720/920/?random=" + Math.round(Math.random() * 1000000) + "')"
 
                 this.board.insertBefore(card, this.board.firstChild)
 
