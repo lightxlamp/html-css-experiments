@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+        .box1 {
+            background-color: hotpink;
+        }
+        .box2 {
+            position: absolute;
+            right: 10px;
+            background-color: indigo;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1 box"></div>
+    <div class="box2 box"></div>
+
+    <script>
+        $box1 = document.querySelector('.box1');
+        $box2 = document.querySelector('.box2');
+
+        $box1.addEventListener('click', (e) => {
+           $box2.click();
+        })       
+        
+        $box2.addEventListener('click', () => {
+            alert('Box2')
+        }) 
+    </script>
+</body>
+</html>
