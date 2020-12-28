@@ -55,6 +55,32 @@
             font-size: 50px;
             margin-right: 20px;
         }
+        @keyframes yay {
+            from {
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: rotate(40deg) translateY(-80px);
+                opacity: 0;
+            }
+        }
+        @keyframes nope {
+            from {
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: rotate(-40deg) translateY(-80px);
+                opacity: 0;
+            }
+        }
+        .cardcontainer.yes .card {
+            animation: yay 0.7s ease-out;
+        }
+        .cardcontainer.nope .card {
+            animation: nope 0.7s ease-out;
+        }
     </style>
 </head>
 
@@ -178,6 +204,7 @@
 
                 // get new coordinates
                 let posX = e.deltaX + this.startPosX
+                console.log('posX', posX);
                 let posY = e.deltaY + this.startPosY
 
                 // get ratio between swiped pixels and the axes
@@ -213,13 +240,13 @@
 
                     // check threshold and movement direction
                     if (propX > 0.25 && e.direction == Hammer.DIRECTION_RIGHT) {
-
+                        alert('Like')
                         successful = true
                         // get right border position
                         posX = this.board.clientWidth
 
                     } else if (propX < -0.25 && e.direction == Hammer.DIRECTION_LEFT) {
-
+                        alert('Nope')
                         successful = true
                         // get left border position
                         posX = -(this.board.clientWidth + this.topCard.clientWidth)
