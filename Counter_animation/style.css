@@ -1,0 +1,31 @@
+@property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+  }
+  
+  .match_percents {
+    animation: counter 3s alternate ease-in-out;
+    animation-fill-mode: forwards;
+    counter-reset: num var(--num);
+    font: 800 40px system-ui;
+    display: inline-block;
+    font-size: 6rem;
+  }
+  .match_percents::after {
+    content: counter(num);
+  }
+
+  .percent_sign {
+      font-size: 2rem;
+  }
+  
+  @keyframes counter {
+    from {
+      --num: 0;
+    }
+    to {
+      --num: 88;
+    }
+  }
+  
