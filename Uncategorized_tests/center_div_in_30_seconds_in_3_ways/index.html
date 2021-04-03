@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        .wrapper {
+            height: 400px;
+            width: 400px;
+            border: 1px solid red;
+            background-color: grey;
+        }
+
+        .box {
+            height: 250px;
+            width: 250px;
+            background-color: red;
+        }
+
+        .wrapper_1 {
+            position:relative;
+        }
+
+        .div_1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .wrapper_2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .wrapper_3 {
+            display: grid;
+            place-items: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper wrapper_1">
+        <div class="box div_1"></div>
+    </div>
+    <div class="wrapper wrapper_2">
+        <div class="box div_2"></div>
+    </div>
+    <div class="wrapper wrapper_3">
+        <div class="box div_3"></div>
+    </div>
+</body>
+</html>
