@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {
+        background: url('https://d2rv3np9wrkgl5.cloudfront.net/img/image-bg.38ae67d.jpg');
+    }
+
+    .overlay {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-height: 100%;
+        min-width: 100%;
+        background-color: rgba(38, 44, 58, .6);
+        z-index: 0;
+    }
+
+    .cookie-banner {
+        position: fixed;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        right: 10%;
+        width: 80%;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        background-color: rgb(248, 249, 249);
+        border-radius: 5px;
+        box-shadow: 0 8px 20px 0 rgb(0 0 0 / 60%);
+        z-index: 1;
+        max-width: 740px;
+    }
+
+    h3 {
+        margin-top: 15px;
+        text-align: center;
+        font-size: 22px;
+        font-weight: 400;
+        color: #333C4E;
+        margin-bottom: 20px;
+    }
+
+    p {
+        padding-bottom: 20px;
+        font-size: 13px;
+        font-weight: 400;
+        color: #898F9A;
+        border-bottom: 1px solid #898F9A;
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    p a {
+        font-weight: 400;
+        color: #898F9A;
+        text-decoration: underline;
+    }
+
+    .close {
+        background-color: #777;
+        border: none;
+        color: white;
+        border-radius: 2px;
+        cursor: pointer;
+        padding: 13px 50px;
+        box-shadow: 0 1px 0 0 #00885e, 0 2px 5px 0 rgb(0 0 0 / 25%);
+        background-color: #44b282;
+        text-shadow: 0 0 2px rgb(31 37 50 / 50%);
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .close {
+            width: 100%;
+        }
+    }
+</style>
+
+<body>
+    <div class="overlay"></div>
+    <div class="cookie-banner" style="display: none">
+        <h3>Wir schätzen Ihre Privatsphäre</h3>
+        <p>
+            Auf unserer Webseite verwenden wir verschiedene Datenverarbeitungstechniken wie bspw. Cookies,
+            um Ihnen ein bestmögliches Nutzungserlebnis bieten zu können. Dabei berücksichtigen wir
+            Ihre Präferenzen und bitten Sie, uns durch Klicken auf "Ich stimme zu" Ihr Einverständnis zu geben.
+            Sie können Ihre gegebene Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.
+            Weitere Informationen zu den Cookies sowie Anpassungsmöglichkeiten finden Sie in den
+            <a id="settings" href="#">Einstellungen</a> sowie in unserer <a id="privacy" class="privacy" href="#">Datenschutzerklärung</a>. Hier finden Sie unser <a id="imprint" class="imprint" href="#">Impressum</a>.
+        </p>
+        <button class="close">Ich stimme zu</button>
+    </div>
+</body>
+
+<script>
+    // if (localStorage.getItem('cookieSeen') != 'shown') {
+    //     $('.cookie-banner').delay(2000).fadeIn();
+    //     localStorage.setItem('cookieSeen', 'shown')
+    // };
+    $('.cookie-banner').delay(300).fadeIn();
+    $('.close').click(function () {
+        $('.cookie-banner').fadeOut();
+    })
+</script>
+
+</html>
