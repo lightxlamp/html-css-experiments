@@ -42,6 +42,15 @@
         box-shadow: 0 8px 20px 0 rgb(0 0 0 / 60%);
         z-index: 1;
         max-width: 740px;
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear .4s, opacity .4s linear;
+    }
+
+    .visible {
+        opacity: 1;
+        visibility: visible;
+        transition-delay: 0s;
     }
 
     h3 {
@@ -92,7 +101,7 @@
 
 <body>
     <div class="overlay"></div>
-    <div class="cookie-banner" style="display: none">
+    <div class="cookie-banner">
         <h3>Wir schätzen Ihre Privatsphäre</h3>
         <p>
             Auf unserer Webseite verwenden wir verschiedene Datenverarbeitungstechniken wie bspw. Cookies,
@@ -107,13 +116,15 @@
 </body>
 
 <script>
-    // if (localStorage.getItem('cookieSeen') != 'shown') {
-    //     $('.cookie-banner').delay(2000).fadeIn();
-    //     localStorage.setItem('cookieSeen', 'shown')
-    // };
-    $('.cookie-banner').delay(300).fadeIn();
-    $('.close').click(function () {
-        $('.cookie-banner').fadeOut();
+
+    document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(() => {
+            document.querySelector('.cookie-banner').classList.add('visible');
+        }, 500)
+    });
+
+    document.querySelector(".close").addEventListener('click', () => {
+        document.querySelector('.cookie-banner').classList.remove('visible');
     })
 </script>
 
