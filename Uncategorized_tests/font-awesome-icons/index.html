@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FontAwesome</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<style>
+.fa-icon {
+    display: inline-block;
+    width: 44px; /* Set the desired width */
+    height: 44px; /* Set the desired height */
+    background-size: cover;
+    background-repeat: no-repeat;
+}   
+
+.fa-smile {
+    background-image: url(https://is3-ssl.mzstatic.com/image/thumb/Purple112/v4/bd/60/51/bd60514c-99df-b0a0-4291-f461d337aa0b/source/512x512bb.jpg); /* Replace with the path to your emoji image */
+}
+.fa-heart {
+    background-image: url(https://m.media-amazon.com/images/I/61vt0QuJ0ZL.png); /* Replace with the path to your emoji image */
+}
+i::before {
+    display: none;
+}
+</style>
+
+<body>
+    Some text 
+    <i class="fa-icon fa-smile"></i>
+    <i class="fa-icon fa-heart"></i>
+
+    <textarea>
+
+    </textarea>
+</body>
+</html>
