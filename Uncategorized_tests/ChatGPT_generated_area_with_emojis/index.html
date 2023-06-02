@@ -1,57 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Custom Emoji Selector</title>
-  <style>
-    .emoji-selector {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .emoji-selector .emoji-icon {
-      margin-right: 10px;
-      cursor: pointer;
-    }
-    .preview-area {
-      margin-top: 10px;
-      border: 1px solid #ccc;
-      padding: 5px;
-      min-height: 100px;
-    }
-    img {
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Emoji Selector</title>
+    <style>
+      .emoji-selector {
+        display: none;
+        position: absolute;
+        top: 150px;
+        left: 0;
+        width: fit-content;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ccc;
+        border-radius: 20px;
+      }
+      .emoji-selector .emoji-icon {
+        margin-right: 10px;
+        cursor: pointer;
+      }
+      .preview-area {
+        margin-top: 10px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        min-height: 50px;
+        display: flex;
+        align-items: center;
+      }
+      img {
         width: 64px;
         height: 64px;
-    }
-  </style>
-</head>
-<body>
-  <div class="emoji-selector">
-    <div class="emoji-icon" onclick="insertEmoji('<img src=\'https://png.pngtree.com/png-clipart/20220620/original/pngtree-happy-emoji-3d-rendering-png-image_8129910.png\' alt=\'Custom Emoji\'>')">
-      <img src="https://png.pngtree.com/png-clipart/20220620/original/pngtree-happy-emoji-3d-rendering-png-image_8129910.png" alt="Custom Emoji">
+      }
+      .preview-area img {
+        width: 32px;
+        height: 32px;
+      }
+      .emoji-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #4ecd0f;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="emoji-selector" id="emojiSelector">
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://m.media-amazon.com/images/I/61vt0QuJ0ZL.png\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://m.media-amazon.com/images/I/61vt0QuJ0ZL.png"
+          alt="Custom Emoji"
+        />
+      </div>
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://dirtyemojifans.com/wp-content/uploads/2017/12/hqemoji001-2.png\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://dirtyemojifans.com/wp-content/uploads/2017/12/hqemoji001-2.png"
+          alt="Custom Emoji"
+        />
+      </div>
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://emoji.discadia.com/emojis/c8185350-6819-4920-8aac-cf4782803cb9.png\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://emoji.discadia.com/emojis/c8185350-6819-4920-8aac-cf4782803cb9.png"
+          alt="Custom Emoji"
+        />
+      </div>
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://www.adultemojis.com/home/wp-content/uploads/edd/2018/08/bdsmemojissix.png\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://www.adultemojis.com/home/wp-content/uploads/edd/2018/08/bdsmemojissix.png"
+          alt="Custom Emoji"
+        />
+      </div>
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://dirtyemojifans.com/wp-content/uploads/2017/12/bdsmscenes-256.png\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://dirtyemojifans.com/wp-content/uploads/2017/12/bdsmscenes-256.png"
+          alt="Custom Emoji"
+        />
+      </div>
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://www.pornemojis.com/home/wp-content/uploads/2016/12/xxxparty-1.png\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://www.pornemojis.com/home/wp-content/uploads/2016/12/xxxparty-1.png"
+          alt="Custom Emoji"
+        />
+      </div>
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://www.adultemojis.com/home/wp-content/uploads/2018/04/pornemoji5.png\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://www.adultemojis.com/home/wp-content/uploads/2018/04/pornemoji5.png"
+          alt="Custom Emoji"
+        />
+      </div>
     </div>
-    <div class="emoji-icon" onclick="insertEmoji('<img src=\'https://png.pngtree.com/png-clipart/20220620/original/pngtree-happy-emoji-3d-rendering-png-image_8129910.png\' alt=\'Custom Emoji\'>')">
-      <img src="https://png.pngtree.com/png-clipart/20220620/original/pngtree-happy-emoji-3d-rendering-png-image_8129910.png" alt="Custom Emoji">
-    </div>
-    <div class="emoji-icon" onclick="insertEmoji('<img src=\'https://png.pngtree.com/png-clipart/20220620/original/pngtree-happy-emoji-3d-rendering-png-image_8129910.png\' alt=\'Custom Emoji\'>')">
-      <img src="https://png.pngtree.com/png-clipart/20220620/original/pngtree-happy-emoji-3d-rendering-png-image_8129910.png" alt="Custom Emoji">
-    </div>
-  </div>
 
-  <div class="preview-area" id="previewArea" contenteditable="true"></div>
+    <button class="emoji-button" onclick="toggleEmojiSelector()">
+      Open Emoji Selector
+    </button>
 
-  <script>
-    function insertEmoji(emoji) {
-      var previewArea = document.getElementById('previewArea');
+    <div class="preview-area" id="previewArea" contenteditable="true"></div>
 
-      var tempDiv = document.createElement('div');
-      tempDiv.innerHTML = emoji;
-      var imgElement = tempDiv.firstChild;
-      imgElement.contentEditable = false;
-      previewArea.appendChild(imgElement);
-    }
-  </script>
-</body>
+    <script>
+      function insertEmoji(emoji) {
+        var previewArea = document.getElementById("previewArea");
+
+        var tempDiv = document.createElement("div");
+        tempDiv.innerHTML = emoji;
+        var imgElement = tempDiv.firstChild;
+        imgElement.contentEditable = false;
+        previewArea.appendChild(imgElement);
+      }
+
+      function toggleEmojiSelector() {
+        var emojiSelector = document.getElementById("emojiSelector");
+        emojiSelector.style.display =
+          emojiSelector.style.display === "flex" ? "none" : "flex";
+      }
+
+      // Close emoji selector when clicked outside
+      window.addEventListener("click", function (event) {
+        var emojiSelector = document.getElementById("emojiSelector");
+        if (
+          !emojiSelector.contains(event.target) &&
+          event.target !== emojiSelector &&
+          event.target.className !== "emoji-button"
+        ) {
+          emojiSelector.style.display = "none";
+        }
+      });
+    </script>
+  </body>
 </html>
