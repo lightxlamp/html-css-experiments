@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Emoji Selector</title>
     <style>
-        body {
-            background-color: #f7f7f7;
-        }
+      body {
+        background-color: #f7f7f7;
+      }
       .emoji-selector {
         display: none;
         position: absolute;
@@ -29,16 +29,17 @@
         cursor: pointer;
       }
       .preview-area {
-        margin-top: 10px;
         border: 1px solid #ccc;
         padding: 5px;
         min-height: 50px;
         display: flex;
         align-items: center;
         background-color: #fff;
-        width: 700px;
+        width: 100%;
         border-radius: 10px;
         margin: 200px auto 10px;
+        max-width: 700px;
+        box-sizing: border-box;
       }
       img {
         width: 64px;
@@ -155,9 +156,9 @@
     <div class="preview-area" id="previewArea" contenteditable="true"></div>
 
     <button class="emoji-button" onclick="toggleEmojiSelector()">
-        Open Emoji Selector ⬆️
-      </button>
-    
+      Open Emoji Selector ⬆️
+    </button>
+
     <div class="overlay" id="overlay"></div>
 
     <script>
