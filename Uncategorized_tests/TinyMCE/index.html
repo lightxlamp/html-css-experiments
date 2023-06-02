@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://cdn.tiny.cloud/1/4s0az2ov349fhx068vjn9tjsikfl86lkhe5cro1h9j0wrv4c/tinymce/6/tinymce.min.js"
+      referrerpolicy="origin"
+    ></script>
+  </head>
+  <body>
+    <textarea> </textarea>
+    <br />
+    <div class="emoji-picker">Add emoji</div>
+    <script>
+      tinymce.init({
+        selector: "textarea",
+        plugins: "emoticons",
+        toolbar: "emoticons",
+        setup: function (editor) {
+          editor.on("init", function () {
+            // Define your custom emojis
+            var customEmojis = [
+              {
+                shortcut: ":custom1:",
+                url: "https://w7.pngwing.com/pngs/630/871/png-transparent-heart-eyes-emoji-emoji-heart-iphone-love-emoji-smiley-sticker-emoticon-thumbnail.png",
+              },
+              {
+                shortcut: ":custom2:",
+                url: "https://w7.pngwing.com/pngs/630/871/png-transparent-heart-eyes-emoji-emoji-heart-iphone-love-emoji-smiley-sticker-emoticon-thumbnail.png",
+              },
+              // Add more custom emojis here
+            ];
+
+            // Register the custom emojis
+            editor.settings.emoticons = customEmojis;
+
+            // Refresh the emoticons dropdown
+            editor.plugins.emoticons.setup();
+          });
+          editor.addButton("customEmojis", {
+            text: "Custom Emojis",
+            icon: "emoji",
+            onclick: function () {
+              // Open a dialog or popover with your custom emojis as images
+              // You can use a library like Bootstrap or create a custom solution
+              alert("Custom emoji dialog placeholder");
+            },
+          });
+        },
+        file_picker_callback: function (callback, value, meta) {
+          // Provide image and alt text for the image dialog
+          if (meta.filetype == "image") {
+            callback(
+              "https://i.pinimg.com/originals/4f/9e/5a/4f9e5ab54d297ce2886ae2b030e43c91.jpg",
+              { alt: "My alt text" }
+            );
+          }
+        },
+      });
+    </script>
+  </body>
+  <style>
+    .tox-toolbar-overlord,
+    .tox .tox-menubar,
+    .tox-notifications-container,
+    .tox .tox-statusbar {
+      /* display: none; */
+    }
+    body {
+      background: #000;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .tox-tinymce {
+      /* height: 49px !important; */
+      width: 713px !important;
+      margin: 20px auto;
+    }
+    #tinymce {
+      padding: 0;
+      margin: 0;
+    }
+    .tox-editor-header {
+      display: none;
+    }
+    p {
+      display: block;
+      margin-block-start: 0;
+      margin-block-end: 0;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+      background: red;
+    }
+    #tinymce p {
+      background-color: red;
+    }
+    #tinymce img {
+      width: 28px;
+    }
+    .emoji-picker {
+      margin: 0 auto;
+      color: #fff;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</html>
+
+<script>
+  document
+    .querySelector(".emoji-picker")
+    .addEventListener("click", function () {
+      document.querySelector("#tinymce p").innerHTML =
+        document.querySelector("#tinymce p").innerHTML +
+        '<img src="https://i.pinimg.com/originals/4f/9e/5a/4f9e5ab54d297ce2886ae2b030e43c91.jpg" data-mce-src="https://i.pinimg.com/originals/4f/9e/5a/4f9e5ab54d297ce2886ae2b030e43c91.jpg">';
+    });
+</script>

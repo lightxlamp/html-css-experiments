@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>TinyMCE Custom Emojis</title>
+  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <link rel="stylesheet" href="//cdn.tinymce.com/4/skins/lightgray/skin.min.css">
+</head>
+<body>
+  <textarea id="myTextarea"></textarea>
+
+  <script>
+    tinymce.init({
+      selector: '#myTextarea',
+      toolbar: 'customEmojis',
+      setup: function (editor) {
+        editor.addButton('customEmojis', {
+          text: 'Custom Emojis',
+          icon: 'emoji',
+          onclick: function () {
+            // Open a dialog or popover with your custom emojis as images
+            // You can use a library like Bootstrap or create a custom solution
+            alert('Custom emoji dialog placeholder');
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
