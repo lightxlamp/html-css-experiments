@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Custom Emoji Selector</title>
     <style>
+        body {
+            background-color: #f7f7f7;
+        }
       .emoji-selector {
         display: none;
         position: absolute;
-        top: 150px;
+        top: 50px;
         left: 0;
         width: fit-content;
         background-color: #fff;
@@ -19,7 +22,6 @@
         z-index: 9999;
         left: 50%;
         transform: translateX(-50%);
-        background: #ccc;
         border-radius: 20px;
       }
       .emoji-selector .emoji-icon {
@@ -33,6 +35,10 @@
         min-height: 50px;
         display: flex;
         align-items: center;
+        background-color: #fff;
+        width: 700px;
+        border-radius: 10px;
+        margin: 200px auto 10px;
       }
       img {
         width: 64px;
@@ -43,12 +49,30 @@
         height: 32px;
       }
       .emoji-button {
-        display: inline-block;
+        display: block;
         padding: 10px 20px;
-        background-color: #4ecd0f;
+        background-color: #183997;
         border: none;
         color: #fff;
         cursor: pointer;
+        margin: 0 auto;
+        border-radius: 6px;
+      }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 9998;
+        display: none;
+      }
+      .emoji-selector.opened {
+        display: flex;
+      }
+      .emoji-button.opened {
+        background-color: grey;
       }
     </style>
   </head>
@@ -117,13 +141,24 @@
           alt="Custom Emoji"
         />
       </div>
+      <div
+        class="emoji-icon"
+        onclick="insertEmoji('<img src=\'https://tubezzz.net/wp-content/uploads/2017/06/10213043-2094-tubezzz.net.gif\' alt=\'Custom Emoji\'>'); toggleEmojiSelector()"
+      >
+        <img
+          src="https://tubezzz.net/wp-content/uploads/2017/06/10213043-2094-tubezzz.net.gif"
+          alt="Custom Emoji"
+        />
+      </div>
     </div>
 
-    <button class="emoji-button" onclick="toggleEmojiSelector()">
-      Open Emoji Selector
-    </button>
-
     <div class="preview-area" id="previewArea" contenteditable="true"></div>
+
+    <button class="emoji-button" onclick="toggleEmojiSelector()">
+        Open Emoji Selector ⬆️
+      </button>
+    
+    <div class="overlay" id="overlay"></div>
 
     <script>
       function insertEmoji(emoji) {
@@ -138,19 +173,34 @@
 
       function toggleEmojiSelector() {
         var emojiSelector = document.getElementById("emojiSelector");
-        emojiSelector.style.display =
-          emojiSelector.style.display === "flex" ? "none" : "flex";
+        var overlay = document.getElementById("overlay");
+        var emojiButton = document.querySelector(".emoji-button");
+
+        if (emojiSelector.style.display === "flex") {
+          emojiSelector.style.display = "none";
+          overlay.style.display = "none";
+          emojiButton.classList.remove("opened");
+        } else {
+          emojiSelector.style.display = "flex";
+          overlay.style.display = "block";
+          emojiButton.classList.add("opened");
+        }
       }
 
       // Close emoji selector when clicked outside
       window.addEventListener("click", function (event) {
         var emojiSelector = document.getElementById("emojiSelector");
+        var overlay = document.getElementById("overlay");
+        var emojiButton = document.querySelector(".emoji-button");
+
         if (
-          !emojiSelector.contains(event.target) &&
           event.target !== emojiSelector &&
-          event.target.className !== "emoji-button"
+          !emojiSelector.contains(event.target) &&
+          event.target !== emojiButton
         ) {
           emojiSelector.style.display = "none";
+          overlay.style.display = "none";
+          emojiButton.classList.remove("opened");
         }
       });
     </script>
