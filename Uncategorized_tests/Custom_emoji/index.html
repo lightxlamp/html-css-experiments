@@ -52,6 +52,65 @@
       imgElement.contentEditable = false;
       previewArea.appendChild(imgElement);
     }
+
+    function setCursorToEnd(contentEditableElement) {
+        var range = document.createRange();
+        var selection = window.getSelection();
+
+        range.selectNodeContents(contentEditableElement);
+        range.collapse(false);
+
+        selection.removeAllRanges();
+        selection.addRange(range);
+
+        // For iOS devices
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream) {
+          var editableElement = contentEditableElement;
+
+          var editableElementRect = editableElement.getBoundingClientRect();
+          var touch = document.createTouch(
+            window,
+            editableElement,
+            0,
+            editableElementRect.left + 2,
+            editableElementRect.top + 2,
+            0,
+            0
+          );
+          var touchList = document.createTouchList(touch);
+
+          var rangeToSelect = document.createRange();
+          rangeToSelect.selectNodeContents(editableElement);
+          rangeToSelect.collapse(false);
+
+          var selectionToModify = window.getSelection();
+          selectionToModify.removeAllRanges();
+          selectionToModify.addRange(rangeToSelect);
+
+          selectionToModify.extend(editableElement, 1);
+          selectionToModify.modify("extend", "forward", "word");
+
+          selectionToModify.addRange(rangeToSelect);
+          selectionToModify.extend(editableElement, 0);
+          selectionToModify.modify("extend", "backward", "character");
+
+          selectionToModify.collapseToEnd();
+          selectionToModify.setBaseAndExtent(
+            editableElement,
+            1,
+            editableElement,
+            1
+          );
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var previewArea = document.getElementById("previewArea");
+
+        previewArea.addEventListener("click", function () {
+          setCursorToEnd(previewArea);
+        });
+      });
   </script>
 </body>
 </html>
