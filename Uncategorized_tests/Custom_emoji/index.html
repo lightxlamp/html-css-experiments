@@ -43,23 +43,15 @@
   <div class="preview-area" id="previewArea" contenteditable="true"></div>
 
   <script>
-      function insertEmoji(emoji) {
-        var previewArea = document.getElementById("previewArea");
-        
-        var tempDiv = document.createElement("div");
-        tempDiv.innerHTML = emoji;
-        var imgElement = tempDiv.firstChild;
-        imgElement.contentEditable = false;
-        previewArea.appendChild(imgElement);
+    function insertEmoji(emoji) {
+      var previewArea = document.getElementById('previewArea');
 
-        // Set the cursor position to the end of the preview area
-        var range = document.createRange();
-        var selection = window.getSelection();
-        range.selectNodeContents(previewArea);
-        range.collapse(false);
-        selection.removeAllRanges();
-        selection.addRange(range);
-      }
+      var tempDiv = document.createElement('div');
+      tempDiv.innerHTML = emoji;
+      var imgElement = tempDiv.firstChild;
+      imgElement.contentEditable = false;
+      previewArea.appendChild(imgElement);
+    }
   </script>
 </body>
 </html>
