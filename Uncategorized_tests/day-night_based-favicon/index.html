@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://github.githubassets.com/favicons/favicon.png">
+    <title>Favicon based on Day/Night mode</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  const faviconEl = document.querySelector('link[rel="shortcut icon"]');
+
+  console.log(faviconEl)
+
+  // watch for changes 🕵️
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  console.log(mediaQuery)
+  mediaQuery.addEventListener("change", themeChange);
+
+  // listener 👂
+  function themeChange(event) {
+    if (event.matches) {
+      faviconEl.setAttribute("href", "https://joyofcode.xyz/assets/favicon-32x32.png");
+    } else {
+      faviconEl.setAttribute("href", "https://github.githubassets.com/favicons/favicon.png");
+    }
+  }
+</script>
